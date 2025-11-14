@@ -12,7 +12,7 @@ model:
 
 training:
   loss_type: "bpr_softplus"   # bpr_sigmoid | bpr_softplus | hinge
-  num_epochs: 20
+  num_epochs: 5
   batch_size: 512
   val_batch_size: 1024
   learning_rate: 0.001

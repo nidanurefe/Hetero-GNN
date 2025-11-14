@@ -6,3 +6,7 @@ __pycache__/
 .vscode/
 logs/
 *.log
+
+.parquet
+.pt
+.pkl

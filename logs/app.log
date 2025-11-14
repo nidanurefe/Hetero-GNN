@@ -616,3 +616,28 @@
 2025-11-14 18:23:43 | INFO | [Epoch 001] train_loss=0.4341  val_pairwise=0.6427
 2025-11-14 18:23:54 | INFO | [Epoch 002] train_loss=0.3396  val_pairwise=0.6339
 2025-11-14 18:24:05 | INFO | [Epoch 003] train_loss=0.3286  val_pairwise=0.6632
+2025-11-14 18:25:52 | INFO | Loading hetero graph...
+2025-11-14 18:25:52 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:25:52 | INFO | Using device: cpu
+2025-11-14 18:25:52 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:26:04 | INFO | [Epoch 001] train_loss=0.4158  val_pairwise=0.7681
+2025-11-14 18:26:16 | INFO | [Epoch 002] train_loss=0.3522  val_pairwise=0.6386
+2025-11-14 18:26:27 | INFO | [Epoch 003] train_loss=0.3323  val_pairwise=0.6612
+2025-11-14 18:26:38 | INFO | [Epoch 004] train_loss=0.3253  val_pairwise=0.7023
+2025-11-14 18:26:50 | INFO | [Epoch 005] train_loss=0.3160  val_pairwise=0.7866
+2025-11-14 18:26:50 | INFO | Saved GAT model → data/processed/gat_model.pt
+2025-11-14 18:29:43 | INFO | Loading hetero graph...
+2025-11-14 18:29:43 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:29:43 | INFO | Using device: cpu
+2025-11-14 18:30:18 | INFO | Loading hetero graph...
+2025-11-14 18:30:18 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:30:18 | INFO | Using device: cpu
+2025-11-14 18:31:29 | INFO | Loading hetero graph...
+2025-11-14 18:31:29 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:31:29 | INFO | Using device: cpu
+2025-11-14 18:31:38 | INFO | Loading hetero graph...
+2025-11-14 18:31:38 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:31:38 | INFO | Using device: cpu
+2025-11-14 18:31:38 | INFO | Saved user embeddings → data/processed/user_embeddings.parquet
+2025-11-14 18:31:38 | INFO | Saved item embeddings → data/processed/item_embeddings.parquet
+2025-11-14 18:31:38 | INFO | Export done.
