@@ -19,6 +19,7 @@ class HeteroGATEncoder(nn.Module):
         num_layers: int = 2,
         heads: int = 2,
         dropout: float = 0.1,
+        edge_dim: int = 4,
     ):
         super().__init__()
         self.num_layers = num_layers
@@ -33,6 +34,7 @@ class HeteroGATEncoder(nn.Module):
                     (in_channels_user, in_channels_item),
                     hidden_channels,
                     heads=heads,
+                    edge_dim=edge_dim,
                     dropout=dropout,
                     add_self_loops=False,
                 ),
@@ -40,6 +42,7 @@ class HeteroGATEncoder(nn.Module):
                     (in_channels_item, in_channels_user),
                     hidden_channels,
                     heads=heads,
+                    edge_dim=edge_dim,
                     dropout=dropout,
                     add_self_loops=False,
                 ),
@@ -56,6 +59,7 @@ class HeteroGATEncoder(nn.Module):
                         (in_dim, in_dim),
                         hidden_channels,
                         heads=heads,
+                        edge_dim=edge_dim,
                         dropout=dropout,
                         add_self_loops=False,
                     ),
@@ -63,6 +67,7 @@ class HeteroGATEncoder(nn.Module):
                         (in_dim, in_dim),
                         hidden_channels,
                         heads=heads,
+                        edge_dim=edge_dim,
                         dropout=dropout,
                         add_self_loops=False,
                     ),
@@ -87,8 +92,19 @@ class HeteroGATEncoder(nn.Module):
             ("item", "rev_rates", "user"): data["user", "rates", "item"].edge_index.flip(0),
         }
 
+        edge_attr_base = data["user", "rates", "item"].edge_attr
+        edge_attr_dict = {
+            ("user", "rates", "item"): edge_attr_base,
+            ("item", "rev_rates", "user"): edge_attr_base,  
+        }
+
+
         for layer, conv in enumerate(self.convs):
-            x_dict = conv(x_dict, edge_index_dict)
+            x_dict = conv(
+                x_dict,
+                edge_index_dict,
+                edge_attr=edge_attr_dict,  
+            )
             # GAT output (N, heads * out_channels)
             x_dict = {k: F.elu(v) for k, v in x_dict.items()}
             if layer < self.num_layers - 1:

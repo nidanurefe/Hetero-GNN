@@ -110,6 +110,7 @@ def main():
         num_layers=cfg.model.num_layers,
         heads=cfg.model.heads,
         dropout=cfg.model.dropout,
+        edge_dim=cfg.model.edge_dim,
     ).to(device)
 
     optimizer = optim.Adam(

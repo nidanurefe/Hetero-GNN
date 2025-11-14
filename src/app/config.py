@@ -16,6 +16,7 @@ class ModelConfig:
     num_layers: int = 2
     heads: int = 2
     dropout: float = 0.1
+    edge_dim: int = 4
 
 
 @dataclass

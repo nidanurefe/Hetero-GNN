@@ -641,3 +641,39 @@
 2025-11-14 18:31:38 | INFO | Saved user embeddings → data/processed/user_embeddings.parquet
 2025-11-14 18:31:38 | INFO | Saved item embeddings → data/processed/item_embeddings.parquet
 2025-11-14 18:31:38 | INFO | Export done.
+2025-11-14 19:39:43 | INFO | Loading hetero graph...
+2025-11-14 19:39:43 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 19:39:43 | INFO | Using device: cpu
+2025-11-14 19:39:43 | INFO | Saved user embeddings → data/processed/user_embeddings.parquet
+2025-11-14 19:39:43 | INFO | Saved item embeddings → data/processed/item_embeddings.parquet
+2025-11-14 19:39:43 | INFO | Export done.
+2025-11-14 19:39:59 | INFO | Loading hetero graph...
+2025-11-14 19:39:59 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 19:39:59 | INFO | Using device: cpu
+2025-11-14 19:39:59 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 19:40:10 | INFO | [Epoch 001] train_loss=0.4464  val_pairwise=0.8314
+2025-11-14 19:40:21 | INFO | [Epoch 002] train_loss=0.3492  val_pairwise=0.6262
+2025-11-14 19:40:33 | INFO | [Epoch 003] train_loss=0.3346  val_pairwise=0.6344
+2025-11-14 19:40:44 | INFO | [Epoch 004] train_loss=0.3311  val_pairwise=0.6314
+2025-11-14 19:40:55 | INFO | [Epoch 005] train_loss=0.3244  val_pairwise=0.7928
+2025-11-14 19:41:07 | INFO | [Epoch 006] train_loss=0.3162  val_pairwise=0.8622
+2025-11-14 19:41:18 | INFO | [Epoch 007] train_loss=0.3095  val_pairwise=0.9013
+2025-11-14 19:41:29 | INFO | [Epoch 008] train_loss=0.3074  val_pairwise=0.9152
+2025-11-14 19:41:41 | INFO | [Epoch 009] train_loss=0.3063  val_pairwise=0.8997
+2025-11-14 19:41:54 | INFO | [Epoch 010] train_loss=0.3032  val_pairwise=0.9126
+2025-11-14 19:42:05 | INFO | [Epoch 011] train_loss=0.3012  val_pairwise=0.9095
+2025-11-14 19:42:17 | INFO | [Epoch 012] train_loss=0.3011  val_pairwise=0.9172
+2025-11-14 19:42:29 | INFO | [Epoch 013] train_loss=0.3001  val_pairwise=0.9100
+2025-11-14 19:42:41 | INFO | [Epoch 014] train_loss=0.2990  val_pairwise=0.9121
+2025-11-14 19:42:53 | INFO | [Epoch 015] train_loss=0.2993  val_pairwise=0.9270
+2025-11-14 19:43:06 | INFO | [Epoch 016] train_loss=0.2977  val_pairwise=0.9121
+2025-11-14 19:43:18 | INFO | [Epoch 017] train_loss=0.2971  val_pairwise=0.9321
+2025-11-14 19:43:30 | INFO | [Epoch 018] train_loss=0.2956  val_pairwise=0.9270
+2025-11-14 19:43:42 | INFO | [Epoch 019] train_loss=0.2954  val_pairwise=0.9203
+2025-11-14 19:43:55 | INFO | [Epoch 020] train_loss=0.2954  val_pairwise=0.9224
+2025-11-14 19:44:07 | INFO | [Epoch 021] train_loss=0.2949  val_pairwise=0.9239
+2025-11-14 19:44:19 | INFO | [Epoch 022] train_loss=0.2931  val_pairwise=0.9249
+2025-11-14 19:44:31 | INFO | [Epoch 023] train_loss=0.2917  val_pairwise=0.9378
+2025-11-14 19:44:42 | INFO | [Epoch 024] train_loss=0.2906  val_pairwise=0.9311
+2025-11-14 19:44:54 | INFO | [Epoch 025] train_loss=0.2910  val_pairwise=0.9337
+2025-11-14 19:44:54 | INFO | Saved GAT model → data/processed/gat_model.pt
