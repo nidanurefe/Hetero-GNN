@@ -30,26 +30,40 @@ def normalize_series(s: pd.Series) -> np.ndarray:
 def build_graph():
     logger.info("Loading processed interaction and feature files..")
     interactions = pd.read_parquet(INTERACTIONS_PATH)
+    
     user_df = pd.read_parquet(USER_FEAT_PATH)
     item_df = pd.read_parquet(ITEM_FEAT_PATH)
 
     logger.info(f"Loaded {len(interactions):,} interactions.")
     logger.info(f"Users: {len(user_df):,} | Items: {len(item_df):,}")
 
+    user_df = user_df.sort_values("user_idx").reset_index(drop=True)
+    item_df = item_df.sort_values("item_idx").reset_index(drop=True)
+
 
     # Node features
     user_features = user_df.filter(regex="norm$|rating_std|verified_ratio|avg_rating").copy()
     item_features = item_df.filter(regex="norm$|rating_std|verified_ratio|avg_rating").copy()
 
-    user = torch.tensor(user_features.to_numpy(), dtype=torch.float32)
-    item = torch.tensor(item_features.to_numpy(), dtype=torch.float32)
+    user_feature_cols = [c for c in user_df.columns
+                         if c not in ("user_idx", "user_id")]
+    item_feature_cols = [c for c in item_df.columns
+                         if c not in ("item_idx", "item_id")]
 
-    logger.info(f"user.x shape = {user.shape}")
-    logger.info(f"item.x shape = {item.shape}")
+    user_x = torch.tensor(user_df[user_feature_cols].to_numpy(), dtype=torch.float32)
+    item_x = torch.tensor(item_df[item_feature_cols].to_numpy(), dtype=torch.float32)
+
+
+    logger.info(f"user.x shape = {user_x.shape}")
+    logger.info(f"item.x shape = {item_x.shape}")
 
     # Edge index 
-    src = torch.tensor(interactions["user_id"].to_numpy(), dtype=torch.long)
-    dst = torch.tensor(interactions["item_id"].to_numpy(), dtype=torch.long)
+    if interactions["user_idx"].isna().any() or interactions["item_idx"].isna().any():
+        logger.error("NaN detected in user_idx or item_idx")
+        raise ValueError("user_idx/item_idx contain NaNs.")
+
+    src = torch.tensor(interactions["user_idx"].to_numpy(), dtype=torch.long)
+    dst = torch.tensor(interactions["item_idx"].to_numpy(), dtype=torch.long)
     edge_index = torch.stack([src, dst], dim=0)
 
     logger.info(f"edge_index shape = {edge_index.shape}")
@@ -73,16 +87,15 @@ def build_graph():
     logger.info("Constructing HeteroData graph...")
 
     data = HeteroData()
-
-    data["user"].x = user
-    data["item"].x = item
-
+    data["user"].x = user_x
+    data["item"].x = item_x
     data["user", "rates", "item"].edge_index = edge_index
     data["user", "rates", "item"].edge_attr = edge_features
 
     # Save graph
     torch.save(data, GRAPH_OUTPUT_PATH)
     logger.info(f"Saved hetero graph → {GRAPH_OUTPUT_PATH}")
+
 
 
 

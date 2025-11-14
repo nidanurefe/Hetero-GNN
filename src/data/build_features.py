@@ -23,10 +23,11 @@ def normalize_series(s: pd.Series) -> pd.Series:
 def build_user_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["timestamp_days"] = df["timestamp_ms"] / 1000 / 3600 / 24 # Convert ms to days
-    grouped = df.groupby("user_id")
+    grouped = df.groupby("user_idx")
 
     user_feat = pd.DataFrame({
         "user_idx": grouped.size().index,
+        "user_id": grouped["user_id"].first().values,  
         "num_reviews": grouped.size().values,
         "avg_rating": grouped["rating"].mean().values,
         "rating_std": grouped["rating"].std().fillna(0.0).values,
@@ -54,11 +55,13 @@ def build_user_features(df: pd.DataFrame) -> pd.DataFrame:
 def build_item_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["timestamp_days"] = df["timestamp_ms"] / 1000 / 3600 / 24 # Convert ms to days
-    grouped = df.groupby("item_id")
+    
+    grouped = df.groupby("item_idx")
 
-    # Build item features
+    # Item features
     item_feat = pd.DataFrame({
         "item_idx": grouped.size().index,
+        "item_id": grouped["item_id"].first().values,  # string asin
         "num_reviews": grouped.size().values,
         "avg_rating": grouped["rating"].mean().values,
         "rating_std": grouped["rating"].std().fillna(0.0).values,

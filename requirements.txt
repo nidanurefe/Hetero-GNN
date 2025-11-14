@@ -7,3 +7,4 @@ pickle
 numpy
 torch
 torch_geometric
+matplotlib

@@ -33,7 +33,7 @@ def read_jsonl(path: Path):
 
 # Function to build interactions DataFrame
 def build_interactions()-> pd.DataFrame:
-    interactions = {}
+    interactions: dict[tuple[str, str], dict] = {}
 
     for entry in read_jsonl(RAW_DATA_PATH):
         user_id = entry.get("user_id")
@@ -68,34 +68,33 @@ def build_id_mappings(df: pd.DataFrame) -> tuple[dict, dict, dict, dict]:
     user_ids = df["user_id"].unique().tolist()
     item_ids = df["item_id"].unique().tolist()
 
-    user2id = {user_id: id for id, user_id in enumerate(user_ids)}
-    item2id = {item_id: id for id, item_id in enumerate(item_ids)}
+    user2idx = {user_id: idx for idx, user_id in enumerate(user_ids)}
+    item2idx = {item_id: idx for idx, item_id in enumerate(item_ids)}
 
-    id2user = {id: user_id for user_id, id in user2id.items()}
-    id2item = {id: item_id for item_id, id in item2id.items()}
+    idx2user = {idx: user_id for user_id, idx in user2idx.items()}
+    idx2item = {idx: item_id for item_id, idx in item2idx.items()}
 
-    return user2id, item2id, id2user, id2item
+    return user2idx, item2idx, idx2user, idx2item
 
 
 def main():
     logger.info("Building interactions DataFrame...")
     interactions_df = build_interactions()
-    user2id, item2id, id2user, id2item = build_id_mappings(interactions_df)
+    user2idx, item2idx, idx2user, idx2item = build_id_mappings(interactions_df)
 
-    interactions_df["user_id"] = interactions_df["user_id"].map(user2id)
-    interactions_df["item_id"] = interactions_df["item_id"].map(user2id)
+    interactions_df["user_idx"] = interactions_df["user_id"].map(user2idx)
+    interactions_df["item_idx"] = interactions_df["item_id"].map(item2idx)
 
     interactions_df.to_parquet(INTERACTIONS_PATH, index=False)
     logger.info(f"Saved interactions → {INTERACTIONS_PATH}")
-
     
     with MAPPINGS_PATH.open("wb") as f:
         pickle.dump(
             {
-                "user2id": user2id,
-                "item2id": item2id,
-                "id2user": id2user,
-                "id2item": id2item,
+                "user2idx": user2idx,
+                "item2idx": item2idx,
+                "idx2user": idx2user,
+                "idx2item": idx2item,
             },
             f,
         )

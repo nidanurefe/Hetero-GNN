@@ -45,3 +45,463 @@
 2025-11-14 13:56:56 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
 2025-11-14 13:56:56 | INFO | Graph build complete.
 2025-11-14 13:56:56 | INFO | Graph build complete.
+2025-11-14 15:05:58 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:05:58 | INFO | Building interactions DataFrame...
+2025-11-14 15:05:58 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:05:58 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:05:58 | INFO | Finished parse_raw.
+2025-11-14 15:05:58 | INFO | Loaded interactions: 70922
+2025-11-14 15:06:00 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:06:00 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:06:00 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:06:00 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:06:00 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:06:00 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:06:00 | INFO | Users: 60,144 | Items: 0
+2025-11-14 15:06:00 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:06:00 | INFO | item.x shape = torch.Size([0, 8])
+2025-11-14 15:06:00 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:06:00 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:06:00 | INFO | Constructing HeteroData graph...
+2025-11-14 15:06:00 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:06:00 | INFO | Graph build complete.
+2025-11-14 15:06:00 | INFO | Graph build complete.
+2025-11-14 15:06:36 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:06:36 | INFO | Building interactions DataFrame...
+2025-11-14 15:06:36 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:06:36 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:06:36 | INFO | Finished parse_raw.
+2025-11-14 15:06:36 | INFO | Loaded interactions: 70922
+2025-11-14 15:06:38 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:06:38 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:06:38 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:06:38 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:06:38 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:06:38 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:06:38 | INFO | Users: 60,144 | Items: 0
+2025-11-14 15:06:38 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:06:38 | INFO | item.x shape = torch.Size([0, 8])
+2025-11-14 15:06:38 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:06:38 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:06:38 | INFO | Constructing HeteroData graph...
+2025-11-14 15:06:38 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:06:38 | INFO | Graph build complete.
+2025-11-14 15:06:38 | INFO | Graph build complete.
+2025-11-14 15:06:51 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:06:51 | INFO | Building interactions DataFrame...
+2025-11-14 15:06:51 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:06:51 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:06:51 | INFO | Finished parse_raw.
+2025-11-14 15:06:51 | INFO | Loaded interactions: 70922
+2025-11-14 15:06:53 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:06:53 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:06:53 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:06:53 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:06:53 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:06:53 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:06:53 | INFO | Users: 60,144 | Items: 0
+2025-11-14 15:06:53 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:06:53 | INFO | item.x shape = torch.Size([0, 8])
+2025-11-14 15:06:53 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:06:53 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:06:53 | INFO | Constructing HeteroData graph...
+2025-11-14 15:06:53 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:06:53 | INFO | Graph build complete.
+2025-11-14 15:06:53 | INFO | Graph build complete.
+2025-11-14 15:06:53 | INFO | Total edges: 70922
+2025-11-14 15:06:53 | INFO | Random user_id selected: 41497
+2025-11-14 15:06:53 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:08:08 | INFO | Total edges: 70922
+2025-11-14 15:08:08 | INFO | Random user_id selected: 28997
+2025-11-14 15:08:08 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:09:20 | INFO | Total edges: 70922
+2025-11-14 15:09:20 | INFO | Random user_id selected: 57154
+2025-11-14 15:09:20 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:09:52 | INFO | Total edges: 70922
+2025-11-14 15:09:52 | INFO | Random user_id selected: 40925
+2025-11-14 15:09:52 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:10:40 | INFO | Total edges: 70922
+2025-11-14 15:10:41 | INFO | Random user_id = AGZSF44UWANN6GTTEYAPGQJWKMPA
+2025-11-14 15:10:41 | INFO | Corresponding user_id = AGZSF44UWANN6GTTEYAPGQJWKMPA
+2025-11-14 15:10:41 | INFO | User has 0 neighbor items in sampled edges.
+2025-11-14 15:10:48 | INFO | Total edges: 70922
+2025-11-14 15:10:48 | INFO | Random user_id = AENXIXXV36DTJPBOZOACSMSVKO7A
+2025-11-14 15:10:48 | INFO | Corresponding user_id = AENXIXXV36DTJPBOZOACSMSVKO7A
+2025-11-14 15:10:48 | INFO | User has 0 neighbor items in sampled edges.
+2025-11-14 15:10:54 | INFO | Total edges: 70922
+2025-11-14 15:10:54 | INFO | Random user_id = AE3YPPGOM3AKTW3LI3VG4RCBHUWQ
+2025-11-14 15:10:54 | INFO | Corresponding user_id = AE3YPPGOM3AKTW3LI3VG4RCBHUWQ
+2025-11-14 15:10:54 | INFO | User has 0 neighbor items in sampled edges.
+2025-11-14 15:12:56 | INFO | Total edges: 70922
+2025-11-14 15:12:56 | INFO | Random user_id selected: AGX5WSUEEVUSA3GXNW72XHCDQQBA
+2025-11-14 15:12:56 | INFO | User has 3 items in sampled edges.
+2025-11-14 15:13:29 | INFO | Total edges: 70922
+2025-11-14 15:13:29 | INFO | Random user_id selected: AFWQO7CB47FTJGRD6W4E4AXUA6HA
+2025-11-14 15:13:29 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:13:44 | INFO | Total edges: 70922
+2025-11-14 15:13:44 | INFO | Random user_id selected: AG5KZMGJVE666UDJA52UDDK4OWNA
+2025-11-14 15:13:44 | INFO | User has 3 items in sampled edges.
+2025-11-14 15:16:04 | INFO | Total edges: 70922
+2025-11-14 15:16:04 | INFO | Random edge #37286
+2025-11-14 15:16:04 | INFO |   user_id = AF2CFUCK4FOCWBET47JRDES5MWXA, user_id = AF2CFUCK4FOCWBET47JRDES5MWXA
+2025-11-14 15:16:04 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:16:04 | INFO |   edge_attr:
+2025-11-14 15:16:04 | INFO |     rating_norm = 0.0
+2025-11-14 15:16:04 | INFO |     time_norm   = 0.7356241345405579
+2025-11-14 15:16:04 | INFO |     verified    = 1.0
+2025-11-14 15:16:04 | INFO |     helpful_log = 0.0
+2025-11-14 15:16:04 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:16:12 | INFO | Total edges: 70922
+2025-11-14 15:16:12 | INFO | Random edge #9564
+2025-11-14 15:16:12 | INFO |   user_id = AH2CVC4G5Q7X5M34LSHFV4J2PGOQ, user_id = AH2CVC4G5Q7X5M34LSHFV4J2PGOQ
+2025-11-14 15:16:12 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:16:12 | INFO |   edge_attr:
+2025-11-14 15:16:12 | INFO |     rating_norm = 1.0
+2025-11-14 15:16:12 | INFO |     time_norm   = 0.7294653654098511
+2025-11-14 15:16:12 | INFO |     verified    = 1.0
+2025-11-14 15:16:12 | INFO |     helpful_log = 1.0986123085021973
+2025-11-14 15:16:12 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:16:15 | INFO | Total edges: 70922
+2025-11-14 15:16:15 | INFO | Random edge #67646
+2025-11-14 15:16:15 | INFO |   user_id = AFIV5YFRFD43N3DIWGMZIO27D5KA, user_id = AFIV5YFRFD43N3DIWGMZIO27D5KA
+2025-11-14 15:16:15 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:16:15 | INFO |   edge_attr:
+2025-11-14 15:16:15 | INFO |     rating_norm = 0.75
+2025-11-14 15:16:15 | INFO |     time_norm   = 0.140018031001091
+2025-11-14 15:16:15 | INFO |     verified    = 0.0
+2025-11-14 15:16:15 | INFO |     helpful_log = 0.6931471824645996
+2025-11-14 15:16:15 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:16:46 | INFO | Total edges: 70922
+2025-11-14 15:16:46 | INFO | Random edge #64487
+2025-11-14 15:16:46 | INFO |   user_id = AF4UB6JHTDI4S4FEX6UODIRRTUHQ, user_id = AF4UB6JHTDI4S4FEX6UODIRRTUHQ
+2025-11-14 15:16:46 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:16:46 | INFO |   edge_attr:
+2025-11-14 15:16:46 | INFO |     rating_norm = 0.5
+2025-11-14 15:16:46 | INFO |     time_norm   = 0.7250000834465027
+2025-11-14 15:16:46 | INFO |     verified    = 1.0
+2025-11-14 15:16:46 | INFO |     helpful_log = 0.0
+2025-11-14 15:16:46 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:16:56 | INFO | Total edges: 70922
+2025-11-14 15:16:56 | INFO | Random edge #30694
+2025-11-14 15:16:56 | INFO |   user_id = AFG6TJYXU634NT5W6LY33EJE7PBQ, user_id = AFG6TJYXU634NT5W6LY33EJE7PBQ
+2025-11-14 15:16:56 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:16:56 | INFO |   edge_attr:
+2025-11-14 15:16:56 | INFO |     rating_norm = 0.5
+2025-11-14 15:16:56 | INFO |     time_norm   = 0.6147528886795044
+2025-11-14 15:16:56 | INFO |     verified    = 1.0
+2025-11-14 15:16:56 | INFO |     helpful_log = 0.0
+2025-11-14 15:16:56 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:17:54 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:17:54 | INFO | Building interactions DataFrame...
+2025-11-14 15:17:54 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:17:54 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:17:54 | INFO | Finished parse_raw.
+2025-11-14 15:17:54 | INFO | Loaded interactions: 70922
+2025-11-14 15:17:56 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:17:56 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:17:56 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:17:56 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:17:56 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:17:56 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:17:56 | INFO | Users: 60,144 | Items: 0
+2025-11-14 15:17:56 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:17:56 | INFO | item.x shape = torch.Size([0, 8])
+2025-11-14 15:17:56 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:17:56 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:17:56 | INFO | Constructing HeteroData graph...
+2025-11-14 15:17:56 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:17:56 | INFO | Graph build complete.
+2025-11-14 15:17:56 | INFO | Graph build complete.
+2025-11-14 15:17:56 | INFO | Total edges: 70922
+2025-11-14 15:17:56 | INFO | Random edge #16414
+2025-11-14 15:17:56 | INFO |   user_id = AG27YWRCT6KJ42XYCN7WKY6LFKTA, user_id = AG27YWRCT6KJ42XYCN7WKY6LFKTA
+2025-11-14 15:17:56 | INFO |   item_id = B00HLSSQKK, item_id = B00HLSSQKK
+2025-11-14 15:17:56 | INFO |   edge_attr:
+2025-11-14 15:17:56 | INFO |     rating_norm = 1.0
+2025-11-14 15:17:56 | INFO |     time_norm   = 0.8985757827758789
+2025-11-14 15:17:56 | INFO |     verified    = 1.0
+2025-11-14 15:17:56 | INFO |     helpful_log = 0.0
+2025-11-14 15:17:56 | ERROR | No matching row found in interactions.parquet!
+2025-11-14 15:20:04 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:20:04 | INFO | Building interactions DataFrame...
+2025-11-14 15:20:04 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:20:04 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:20:04 | INFO | Finished parse_raw.
+2025-11-14 15:20:04 | INFO | Loaded interactions: 70922
+2025-11-14 15:20:06 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:20:06 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:20:06 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:20:06 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:20:06 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:20:06 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:20:06 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:20:06 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:20:06 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:20:40 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:20:40 | INFO | Building interactions DataFrame...
+2025-11-14 15:20:41 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:20:41 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:20:41 | INFO | Finished parse_raw.
+2025-11-14 15:20:41 | INFO | Loaded interactions: 70922
+2025-11-14 15:20:43 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:20:43 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:20:43 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:20:43 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:20:43 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:20:43 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:20:43 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:20:43 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:20:43 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:21:18 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:21:18 | INFO | Building interactions DataFrame...
+2025-11-14 15:21:18 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:21:18 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:21:18 | INFO | Finished parse_raw.
+2025-11-14 15:21:18 | INFO | Loaded interactions: 70922
+2025-11-14 15:21:20 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:21:20 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:21:20 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:21:20 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:21:20 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:21:20 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:21:20 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:21:20 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:21:20 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:21:31 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:21:31 | INFO | Building interactions DataFrame...
+2025-11-14 15:21:31 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:21:31 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:21:31 | INFO | Finished parse_raw.
+2025-11-14 15:21:31 | INFO | Loaded interactions: 70922
+2025-11-14 15:21:33 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:21:33 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:21:33 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:21:33 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:21:33 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:21:33 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:21:33 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:21:33 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:21:33 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:22:08 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:22:08 | INFO | Building interactions DataFrame...
+2025-11-14 15:22:09 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:22:09 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:22:09 | INFO | Finished parse_raw.
+2025-11-14 15:22:09 | INFO | Loaded interactions: 70922
+2025-11-14 15:22:11 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:22:11 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:22:11 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:22:11 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:22:11 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:22:11 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:22:11 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:22:11 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:22:11 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:23:04 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:23:04 | INFO | Building interactions DataFrame...
+2025-11-14 15:23:04 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:23:04 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:23:04 | INFO | Finished parse_raw.
+2025-11-14 15:23:04 | INFO | Loaded interactions: 70922
+2025-11-14 15:23:06 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:23:06 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:23:06 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:23:06 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:23:06 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:23:06 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:23:06 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:23:06 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:23:06 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:23:11 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:23:11 | INFO | Building interactions DataFrame...
+2025-11-14 15:23:12 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:23:12 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:23:12 | INFO | Finished parse_raw.
+2025-11-14 15:23:12 | INFO | Loaded interactions: 70922
+2025-11-14 15:23:14 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:23:14 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:23:14 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:23:14 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:23:14 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:23:14 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:23:14 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:23:14 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:23:14 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:23:28 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:23:28 | INFO | Building interactions DataFrame...
+2025-11-14 15:23:29 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:23:29 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:23:29 | INFO | Finished parse_raw.
+2025-11-14 15:23:29 | INFO | Loaded interactions: 70922
+2025-11-14 15:23:31 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:23:31 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:23:31 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:23:31 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:23:31 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:23:31 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:23:31 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:23:31 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:23:31 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:23:39 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:23:39 | INFO | Building interactions DataFrame...
+2025-11-14 15:23:40 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:23:40 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:23:40 | INFO | Finished parse_raw.
+2025-11-14 15:23:40 | INFO | Loaded interactions: 70922
+2025-11-14 15:23:42 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:23:42 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:23:42 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:23:42 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:23:42 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:23:42 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:23:42 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:23:42 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 15:23:42 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 15:31:36 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:31:36 | INFO | Building interactions DataFrame...
+2025-11-14 15:31:36 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:31:36 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:31:36 | INFO | Finished parse_raw.
+2025-11-14 15:31:36 | INFO | Loaded interactions: 70922
+2025-11-14 15:31:38 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:31:38 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:31:38 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:31:38 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:31:38 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:31:38 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:31:38 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:31:38 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 15:31:38 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 15:31:38 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:31:38 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:31:38 | INFO | Constructing HeteroData graph...
+2025-11-14 15:31:38 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:31:38 | INFO | Graph build complete.
+2025-11-14 15:31:38 | INFO | Graph build complete.
+2025-11-14 15:31:53 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:31:53 | INFO | Building interactions DataFrame...
+2025-11-14 15:31:53 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:31:53 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:31:53 | INFO | Finished parse_raw.
+2025-11-14 15:31:53 | INFO | Loaded interactions: 70922
+2025-11-14 15:31:55 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:31:55 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:31:55 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:31:55 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:31:55 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:31:55 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:31:55 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:31:55 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 15:31:55 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 15:31:55 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:31:55 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:31:55 | INFO | Constructing HeteroData graph...
+2025-11-14 15:31:55 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:31:55 | INFO | Graph build complete.
+2025-11-14 15:31:55 | INFO | Graph build complete.
+2025-11-14 15:32:04 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:32:04 | INFO | Building interactions DataFrame...
+2025-11-14 15:32:04 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:32:04 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:32:04 | INFO | Finished parse_raw.
+2025-11-14 15:32:04 | INFO | Loaded interactions: 70922
+2025-11-14 15:32:06 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:32:06 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:32:06 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:32:06 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:32:06 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:32:06 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:32:06 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:32:06 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 15:32:06 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 15:32:06 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:32:06 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:32:06 | INFO | Constructing HeteroData graph...
+2025-11-14 15:32:06 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:32:06 | INFO | Graph build complete.
+2025-11-14 15:32:06 | INFO | Graph build complete.
+2025-11-14 15:32:06 | INFO | Total edges: 70922
+2025-11-14 15:32:06 | INFO | Random edge #14270
+2025-11-14 15:32:06 | INFO |   user_id = AH67ROK4SD6WFR7LS7ZOABPCT62Q, user_id = AH67ROK4SD6WFR7LS7ZOABPCT62Q
+2025-11-14 15:32:06 | INFO |   item_id = B001TP73UK, item_id = B001TP73UK
+2025-11-14 15:32:06 | INFO |   edge_attr:
+2025-11-14 15:32:06 | INFO |     rating_norm = 0.0
+2025-11-14 15:32:06 | INFO |     time_norm   = 0.8009122610092163
+2025-11-14 15:32:06 | INFO |     verified    = 0.0
+2025-11-14 15:32:06 | INFO |     helpful_log = 1.0986123085021973
+2025-11-14 15:32:06 | INFO | Matching row in interactions.parquet:
+2025-11-14 15:32:06 | INFO |   user_id       = AH67ROK4SD6WFR7LS7ZOABPCT62Q
+2025-11-14 15:32:06 | INFO |   item_id       = B001TP73UK
+2025-11-14 15:32:06 | INFO |   rating        = 1.0
+2025-11-14 15:32:06 | INFO |   timestamp_ms  = 1555162023696
+2025-11-14 15:32:06 | INFO |   helpful_vote  = 2
+2025-11-14 15:32:06 | INFO |   verified_purc = False
+2025-11-14 15:32:06 | INFO |   expected rating_norm = 0.0
+2025-11-14 15:32:06 | INFO |   expected helpful_log = 1.0986122886681098
+2025-11-14 15:32:06 | INFO |   expected verified    = 0
+2025-11-14 15:32:06 | INFO | Spot check done
+2025-11-14 15:32:57 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:32:57 | INFO | Building interactions DataFrame...
+2025-11-14 15:32:57 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:32:57 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:32:57 | INFO | Finished parse_raw.
+2025-11-14 15:32:57 | INFO | Loaded interactions: 70922
+2025-11-14 15:32:59 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:32:59 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:32:59 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:32:59 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:32:59 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:32:59 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:32:59 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:32:59 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 15:32:59 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 15:32:59 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:32:59 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:32:59 | INFO | Constructing HeteroData graph...
+2025-11-14 15:32:59 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:32:59 | INFO | Graph build complete.
+2025-11-14 15:32:59 | INFO | Graph build complete.
+2025-11-14 15:33:07 | INFO | Starting full preprocessing pipeline...
+2025-11-14 15:33:07 | INFO | Building interactions DataFrame...
+2025-11-14 15:33:07 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 15:33:07 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 15:33:07 | INFO | Finished parse_raw.
+2025-11-14 15:33:07 | INFO | Loaded interactions: 70922
+2025-11-14 15:33:09 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 15:33:09 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 15:33:09 | INFO | Preprocessing pipeline finished.
+2025-11-14 15:33:09 | INFO | Building heterogenous bipartite graph...
+2025-11-14 15:33:09 | INFO | Loading processed interaction and feature files..
+2025-11-14 15:33:09 | INFO | Loaded 70,922 interactions.
+2025-11-14 15:33:09 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 15:33:09 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 15:33:09 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 15:33:09 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 15:33:09 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 15:33:09 | INFO | Constructing HeteroData graph...
+2025-11-14 15:33:09 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 15:33:09 | INFO | Graph build complete.
+2025-11-14 15:33:09 | INFO | Graph build complete.
+2025-11-14 15:33:09 | INFO | Total edges: 70922
+2025-11-14 15:33:09 | INFO | Random user_id selected: AEV5OGVKAVOQFSPV5NAC2RNTQMGA
+2025-11-14 15:33:09 | INFO | User has 1 items in sampled edges.
+2025-11-14 15:33:13 | INFO | Total edges: 70922
+2025-11-14 15:33:13 | INFO | Random edge #9381
+2025-11-14 15:33:13 | INFO |   user_id = AGHHNOLJHVPUNOCXGS4BX33UT3AA, user_id = AGHHNOLJHVPUNOCXGS4BX33UT3AA
+2025-11-14 15:33:13 | INFO |   item_id = B0061SHL02, item_id = B0061SHL02
+2025-11-14 15:33:13 | INFO |   edge_attr:
+2025-11-14 15:33:13 | INFO |     rating_norm = 0.25
+2025-11-14 15:33:13 | INFO |     time_norm   = 0.816131055355072
+2025-11-14 15:33:13 | INFO |     verified    = 1.0
+2025-11-14 15:33:13 | INFO |     helpful_log = 1.3862943649291992
+2025-11-14 15:33:13 | INFO | Matching row in interactions.parquet:
+2025-11-14 15:33:13 | INFO |   user_id       = AGHHNOLJHVPUNOCXGS4BX33UT3AA
+2025-11-14 15:33:13 | INFO |   item_id       = B0061SHL02
+2025-11-14 15:33:13 | INFO |   rating        = 2.0
+2025-11-14 15:33:13 | INFO |   timestamp_ms  = 1565632736301
+2025-11-14 15:33:13 | INFO |   helpful_vote  = 3
+2025-11-14 15:33:13 | INFO |   verified_purc = True
+2025-11-14 15:33:13 | INFO |   expected rating_norm = 0.25
+2025-11-14 15:33:13 | INFO |   expected helpful_log = 1.3862943611198906
+2025-11-14 15:33:13 | INFO |   expected verified    = 1
+2025-11-14 15:33:13 | INFO | Spot check done
