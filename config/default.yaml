@@ -1,6 +1,18 @@
 data:
-  raw_path: "data/raw/Magazine_Subscriptions.jsonl"
   processed_dir: "data/processed"
+  
+  raw:
+    target: 
+      name: "magazine"
+      path: "data/raw/Magazine_Subscriptions.jsonl"
+
+    sources: 
+      - name: "magazine"
+        path: "data/raw/Magazine_Subscriptions.jsonl"
+      # - name: "appliances"
+      #   path: "data/raw/Appliances.jsonl"
+      # - name: "movies"
+        # path: "data/raw/Movies.jsonl"
 
 model:
   type: "gat"          

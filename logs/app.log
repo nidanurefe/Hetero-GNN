@@ -677,3 +677,213 @@
 2025-11-14 19:44:42 | INFO | [Epoch 024] train_loss=0.2906  val_pairwise=0.9311
 2025-11-14 19:44:54 | INFO | [Epoch 025] train_loss=0.2910  val_pairwise=0.9337
 2025-11-14 19:44:54 | INFO | Saved GAT model → data/processed/gat_model.pt
+2025-11-14 20:18:44 | INFO | Starting full preprocessing pipeline...
+2025-11-14 20:18:44 | INFO | Building interactions DataFrame...
+2025-11-14 20:18:44 | INFO | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:18:44 | INFO | Reading source dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-11-14 20:18:51 | INFO | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['magazine', 'appliances']
+2025-11-14 20:18:54 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:18:54 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:18:54 | INFO | Finished parse_raw.
+2025-11-14 20:18:54 | INFO | Starting train/val/test split process...
+2025-11-14 20:18:55 | INFO | Loaded interactions: 2176870
+2025-11-14 20:19:04 | INFO | Train interactions: 1854935
+2025-11-14 20:19:04 | INFO | Validation interactions: 66293
+2025-11-14 20:19:04 | INFO | Test interactions: 255642)
+2025-11-14 20:19:05 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:19:06 | INFO | Train/val/test split process completed.
+2025-11-14 20:19:07 | INFO | Loaded interactions: 2176870
+2025-11-14 20:20:16 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 20:20:16 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 20:20:16 | INFO | Preprocessing pipeline finished.
+2025-11-14 20:20:16 | INFO | Building heterogenous bipartite graph...
+2025-11-14 20:20:16 | INFO | Loading processed interaction and feature files..
+2025-11-14 20:20:18 | INFO | Loaded 2,176,870 interactions.
+2025-11-14 20:20:18 | INFO | Users: 1,807,292 | Items: 107,628
+2025-11-14 20:20:18 | INFO | user.x shape = torch.Size([1807292, 8])
+2025-11-14 20:20:18 | INFO | item.x shape = torch.Size([107628, 8])
+2025-11-14 20:20:18 | INFO | edge_index shape = torch.Size([2, 2176870])
+2025-11-14 20:20:18 | INFO | edge_attribute shape = torch.Size([2176870, 4])
+2025-11-14 20:20:18 | INFO | Edge split counts: train=1854935, val=66293, test=255642
+2025-11-14 20:20:18 | INFO | Constructing HeteroData graph...
+2025-11-14 20:20:18 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 20:20:18 | INFO | Graph build complete.
+2025-11-14 20:20:18 | INFO | Graph build complete.
+2025-11-14 20:22:23 | INFO | Starting pipeline...
+2025-11-14 20:22:23 | INFO | Step 1: Parsing raw datasets...
+2025-11-14 20:22:23 | INFO | Building interactions DataFrame...
+2025-11-14 20:22:23 | INFO | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:22:23 | INFO | Reading source dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-11-14 20:22:29 | INFO | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['magazine', 'appliances']
+2025-11-14 20:22:32 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:22:32 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:22:32 | INFO | Finished parse_raw.
+2025-11-14 20:22:32 | INFO | Step 2: Splitting interactions...
+2025-11-14 20:22:32 | INFO | Starting train/val/test split process...
+2025-11-14 20:22:33 | INFO | Loaded interactions: 2176870
+2025-11-14 20:22:42 | INFO | Train interactions: 1854935
+2025-11-14 20:22:42 | INFO | Validation interactions: 66293
+2025-11-14 20:22:42 | INFO | Test interactions: 255642)
+2025-11-14 20:22:44 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:22:44 | INFO | Train/val/test split process completed.
+2025-11-14 20:22:44 | INFO | Step 3: Building user/item features...
+2025-11-14 20:22:45 | INFO | Loaded interactions: 2176870
+2025-11-14 20:23:54 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 20:23:54 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 20:23:54 | INFO | Step 4: Building heterogeneous graph...
+2025-11-14 20:23:54 | INFO | Building heterogenous bipartite graph...
+2025-11-14 20:23:54 | INFO | Loading processed interaction and feature files..
+2025-11-14 20:23:56 | INFO | Loaded 2,176,870 interactions.
+2025-11-14 20:23:56 | INFO | Users: 1,807,292 | Items: 107,628
+2025-11-14 20:23:56 | INFO | user.x shape = torch.Size([1807292, 8])
+2025-11-14 20:23:56 | INFO | item.x shape = torch.Size([107628, 8])
+2025-11-14 20:23:56 | INFO | edge_index shape = torch.Size([2, 2176870])
+2025-11-14 20:23:56 | INFO | edge_attribute shape = torch.Size([2176870, 4])
+2025-11-14 20:23:56 | INFO | Edge split counts: train=1854935, val=66293, test=255642
+2025-11-14 20:23:56 | INFO | Constructing HeteroData graph...
+2025-11-14 20:23:56 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 20:23:56 | INFO | Graph build complete.
+2025-11-14 20:23:56 | INFO | Step 5: Training GAT model...
+2025-11-14 20:23:56 | INFO | Loading hetero graph...
+2025-11-14 20:23:56 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 20:23:56 | INFO | Using device: cpu
+2025-11-14 20:23:56 | INFO | Train edges: 1854935, Val edges: 66293
+2025-11-14 20:25:46 | INFO | Starting pipeline...
+2025-11-14 20:25:46 | INFO | Step 1: Parsing raw datasets...
+2025-11-14 20:25:46 | INFO | Building interactions DataFrame...
+2025-11-14 20:25:46 | INFO | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:25:46 | INFO | Reading source dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-11-14 20:25:52 | INFO | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['magazine', 'appliances']
+2025-11-14 20:25:55 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:25:56 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:25:56 | INFO | Finished parse_raw.
+2025-11-14 20:25:56 | INFO | Step 2: Splitting interactions...
+2025-11-14 20:25:56 | INFO | Starting train/val/test split process...
+2025-11-14 20:25:57 | INFO | Loaded interactions: 2176870
+2025-11-14 20:26:06 | INFO | Train interactions: 1854935
+2025-11-14 20:26:06 | INFO | Validation interactions: 66293
+2025-11-14 20:26:06 | INFO | Test interactions: 255642)
+2025-11-14 20:26:07 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:26:07 | INFO | Train/val/test split process completed.
+2025-11-14 20:26:07 | INFO | Step 3: Building user/item features...
+2025-11-14 20:26:08 | INFO | Loaded interactions: 2176870
+2025-11-14 20:27:19 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 20:27:19 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 20:27:19 | INFO | Step 4: Building heterogeneous graph...
+2025-11-14 20:27:19 | INFO | Building heterogenous bipartite graph...
+2025-11-14 20:27:19 | INFO | Loading processed interaction and feature files..
+2025-11-14 20:27:20 | INFO | Loaded 2,176,870 interactions.
+2025-11-14 20:27:20 | INFO | Users: 1,807,292 | Items: 107,628
+2025-11-14 20:27:21 | INFO | user.x shape = torch.Size([1807292, 8])
+2025-11-14 20:27:21 | INFO | item.x shape = torch.Size([107628, 8])
+2025-11-14 20:27:21 | INFO | edge_index shape = torch.Size([2, 2176870])
+2025-11-14 20:27:21 | INFO | edge_attribute shape = torch.Size([2176870, 4])
+2025-11-14 20:27:21 | INFO | Edge split counts: train=1854935, val=66293, test=255642
+2025-11-14 20:27:21 | INFO | Constructing HeteroData graph...
+2025-11-14 20:27:21 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 20:27:21 | INFO | Graph build complete.
+2025-11-14 20:27:21 | INFO | Step 5: Training GAT model...
+2025-11-14 20:27:21 | INFO | Loading hetero graph...
+2025-11-14 20:27:21 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 20:27:21 | INFO | Using device: cpu
+2025-11-14 20:27:21 | INFO | Train edges: 1854935, Val edges: 66293
+2025-11-14 20:34:33 | INFO | __main__ | Starting pipeline...
+2025-11-14 20:34:33 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-11-14 20:34:33 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-11-14 20:34:33 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:34:33 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-11-14 20:34:39 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['magazine', 'appliances']
+2025-11-14 20:34:42 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:34:43 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:34:43 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-11-14 20:34:43 | INFO | __main__ | Step 2: Splitting interactions...
+2025-11-14 20:34:43 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-11-14 20:34:44 | INFO | src.data.split_interactions | Loaded interactions: 2176870
+2025-11-14 20:34:53 | INFO | src.data.split_interactions | Train interactions: 1854935
+2025-11-14 20:34:53 | INFO | src.data.split_interactions | Validation interactions: 66293
+2025-11-14 20:34:53 | INFO | src.data.split_interactions | Test interactions: 255642)
+2025-11-14 20:34:54 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:34:54 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-11-14 20:34:54 | INFO | __main__ | Step 3: Building user/item features...
+2025-11-14 20:34:55 | INFO | src.data.build_features | Loaded interactions: 2176870
+2025-11-14 20:35:28 | INFO | __main__ | Starting pipeline...
+2025-11-14 20:35:28 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 70922 rows, 60144 users, 3391 items, domains=['magazine']
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:35:28 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-11-14 20:35:28 | INFO | __main__ | Step 2: Splitting interactions...
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Loaded interactions: 70922
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Train interactions: 62169
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Validation interactions: 1945
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Test interactions: 6808)
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:35:28 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-11-14 20:35:28 | INFO | __main__ | Step 3: Building user/item features...
+2025-11-14 20:35:28 | INFO | src.data.build_features | Loaded interactions: 70922
+2025-11-14 20:35:31 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-11-14 20:35:31 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-11-14 20:35:31 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Loaded 70,922 interactions.
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Users: 60,144 | Items: 3,391
+2025-11-14 20:35:31 | INFO | src.data.build_graph | user.x shape = torch.Size([60144, 8])
+2025-11-14 20:35:31 | INFO | src.data.build_graph | item.x shape = torch.Size([3391, 8])
+2025-11-14 20:35:31 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 70922])
+2025-11-14 20:35:31 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Edge split counts: train=62169, val=1945, test=6808
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 20:35:31 | INFO | src.data.build_graph | Graph build complete.
+2025-11-14 20:35:31 | INFO | __main__ | Step 5: Training GAT model...
+2025-11-14 20:35:31 | INFO | src.train.train_gat | Loading hetero graph...
+2025-11-14 20:35:31 | INFO | src.train.train_gat | user_in_dim=8, item_in_dim=8
+2025-11-14 20:35:31 | INFO | src.train.train_gat | Using device: cpu
+2025-11-14 20:35:31 | INFO | src.train.train_gat | Train edges: 62169, Val edges: 1945
+2025-11-14 20:35:46 | INFO | src.train.train_gat | [Epoch 001] train_loss=0.4251  val_pairwise=0.8452
+2025-11-14 20:36:00 | INFO | src.train.train_gat | [Epoch 002] train_loss=0.3496  val_pairwise=0.7069
+2025-11-14 20:36:15 | INFO | src.train.train_gat | [Epoch 003] train_loss=0.3351  val_pairwise=0.7373
+2025-11-14 20:36:36 | INFO | __main__ | Starting pipeline...
+2025-11-14 20:36:36 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 70922 rows, 60144 users, 3391 items, domains=['magazine']
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-11-14 20:36:36 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-11-14 20:36:36 | INFO | __main__ | Step 2: Splitting interactions...
+2025-11-14 20:36:36 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-11-14 20:36:36 | INFO | src.data.split_interactions | Loaded interactions: 70922
+2025-11-14 20:36:37 | INFO | src.data.split_interactions | Train interactions: 62169
+2025-11-14 20:36:37 | INFO | src.data.split_interactions | Validation interactions: 1945
+2025-11-14 20:36:37 | INFO | src.data.split_interactions | Test interactions: 6808)
+2025-11-14 20:36:37 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 20:36:37 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-11-14 20:36:37 | INFO | __main__ | Step 3: Building user/item features...
+2025-11-14 20:36:37 | INFO | src.data.build_features | Loaded interactions: 70922
+2025-11-14 20:36:39 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-11-14 20:36:39 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-11-14 20:36:39 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Loaded 70,922 interactions.
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Users: 60,144 | Items: 3,391
+2025-11-14 20:36:39 | INFO | src.data.build_graph | user.x shape = torch.Size([60144, 8])
+2025-11-14 20:36:39 | INFO | src.data.build_graph | item.x shape = torch.Size([3391, 8])
+2025-11-14 20:36:39 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 70922])
+2025-11-14 20:36:39 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Edge split counts: train=62169, val=1945, test=6808
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 20:36:39 | INFO | src.data.build_graph | Graph build complete.
+2025-11-14 20:36:39 | INFO | __main__ | Step 5: Training GAT model...
+2025-11-14 20:36:39 | INFO | src.train.train_gat | Loading hetero graph...
+2025-11-14 20:36:39 | INFO | src.train.train_gat | user_in_dim=8, item_in_dim=8
+2025-11-14 20:36:39 | INFO | src.train.train_gat | Using device: cpu
+2025-11-14 20:36:39 | INFO | src.train.train_gat | Train edges: 62169, Val edges: 1945

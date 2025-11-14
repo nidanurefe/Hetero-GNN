@@ -1,11 +1,25 @@
 from dataclasses import dataclass
 from pathlib import Path
 import yaml
+from typing import List
+
+
+@dataclass
+class RawDatasetConfig:
+    name: str
+    path: str
+
+
+@dataclass
+class RawConfig:
+    target: RawDatasetConfig
+    sources: List[RawDatasetConfig]
+
 
 @dataclass
 class DataConfig:
-    raw_path: str
     processed_dir: str
+    raw: RawConfig
 
 
 @dataclass
@@ -22,7 +36,7 @@ class ModelConfig:
 @dataclass
 class TrainingConfig:
     loss_type: str = "bpr_softplus"
-    num_epochs: int = 20
+    num_epochs: int = 25
     batch_size: int = 512
     val_batch_size: int = 1024
     learning_rate: float = 1e-3
@@ -47,36 +61,41 @@ class Config:
 # Config Loader
 
 _DEFAULT_CONFIG_PATH = Path("config/default.yaml")
-_cached_config: Config | None = None
+_config_cache: Config | None = None
 
+def load_config() -> Config:
+    global _config_cache
+    if _config_cache is not None:
+        return _config_cache
 
-def load_config(path: Path | str = _DEFAULT_CONFIG_PATH) -> Config:
-    global _cached_config
+    with _DEFAULT_CONFIG_PATH.open("r") as f:
+        raw_cfg = yaml.safe_load(f)
 
-    if _cached_config is not None:
-        return _cached_config
+    data_cfg = raw_cfg["data"]
+    train_cfg = raw_cfg["training"]
+    model_cfg = raw_cfg["model"]
 
-    path = Path(path)
+    target_cfg = data_cfg["raw"]["target"]
+    sources_cfg = data_cfg["raw"]["sources"]
 
-    if not path.exists():
-        raise FileNotFoundError(f"Config file not found: {path}")
+    logging_cfg = raw_cfg.get("logging", {})
 
-    with path.open("r", encoding="utf-8") as f:
-        raw = yaml.safe_load(f)
-
-    data_cfg = DataConfig(**raw["data"])
-    model_cfg = ModelConfig(**raw["model"])
-    training_cfg = TrainingConfig(**raw["training"])
-    logging_cfg = LoggingConfig(**raw.get("logging", {}))
-
-    _cached_config = Config(
-        data=data_cfg,
-        model=model_cfg,
-        training=training_cfg,
-        logging=logging_cfg,
+    cfg = Config(
+        data=DataConfig(
+            processed_dir=data_cfg["processed_dir"],
+            raw=RawConfig(
+                target=RawDatasetConfig(**target_cfg),
+                sources=[RawDatasetConfig(**s) for s in sources_cfg],
+                
+            ),
+        ),
+        training=TrainingConfig(**train_cfg),
+        model=ModelConfig(**model_cfg),
+        logging=LoggingConfig(**logging_cfg),
     )
-    return _cached_config
 
+    _config_cache = cfg
+    return cfg
 
 def get_config() -> Config:
     return load_config()

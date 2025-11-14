@@ -103,7 +103,7 @@ class HeteroGATEncoder(nn.Module):
             x_dict = conv(
                 x_dict,
                 edge_index_dict,
-                edge_attr=edge_attr_dict,  
+                edge_attr_dict=edge_attr_dict,  
             )
             # GAT output (N, heads * out_channels)
             x_dict = {k: F.elu(v) for k, v in x_dict.items()}
