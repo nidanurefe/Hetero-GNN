@@ -1,0 +1,47 @@
+2025-11-14 12:55:52 | INFO | Starting full preprocessing pipeline...
+2025-11-14 12:55:52 | INFO | Building interactions DataFrame...
+2025-11-14 12:56:23 | INFO | Starting full preprocessing pipeline...
+2025-11-14 12:56:23 | INFO | Building interactions DataFrame...
+2025-11-14 12:56:24 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 12:56:24 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 12:56:24 | INFO | Finished parse_raw.
+2025-11-14 12:56:24 | INFO | Preprocessing pipeline finished.
+2025-11-14 13:41:54 | INFO | Starting full preprocessing pipeline...
+2025-11-14 13:41:54 | INFO | Building interactions DataFrame...
+2025-11-14 13:41:55 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 13:41:55 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 13:41:55 | INFO | Finished parse_raw.
+2025-11-14 13:41:56 | INFO | Loaded interactions: 70922
+2025-11-14 13:41:59 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 13:41:59 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 13:41:59 | INFO | Preprocessing pipeline finished.
+2025-11-14 13:46:31 | INFO | Starting full preprocessing pipeline...
+2025-11-14 13:46:31 | INFO | Building interactions DataFrame...
+2025-11-14 13:46:31 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 13:46:31 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 13:46:31 | INFO | Finished parse_raw.
+2025-11-14 13:46:31 | INFO | Loaded interactions: 70922
+2025-11-14 13:46:33 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 13:46:33 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 13:46:33 | INFO | Preprocessing pipeline finished.
+2025-11-14 13:56:53 | INFO | Starting full preprocessing pipeline...
+2025-11-14 13:56:53 | INFO | Building interactions DataFrame...
+2025-11-14 13:56:53 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 13:56:53 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 13:56:53 | INFO | Finished parse_raw.
+2025-11-14 13:56:54 | INFO | Loaded interactions: 70922
+2025-11-14 13:56:56 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 13:56:56 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 13:56:56 | INFO | Preprocessing pipeline finished.
+2025-11-14 13:56:56 | INFO | Building heterogenous bipartite graph...
+2025-11-14 13:56:56 | INFO | Loading processed interaction and feature files..
+2025-11-14 13:56:56 | INFO | Loaded 70,922 interactions.
+2025-11-14 13:56:56 | INFO | Users: 60,144 | Items: 0
+2025-11-14 13:56:56 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 13:56:56 | INFO | item.x shape = torch.Size([0, 8])
+2025-11-14 13:56:56 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 13:56:56 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 13:56:56 | INFO | Constructing HeteroData graph...
+2025-11-14 13:56:56 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 13:56:56 | INFO | Graph build complete.
+2025-11-14 13:56:56 | INFO | Graph build complete.
