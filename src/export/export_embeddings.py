@@ -66,8 +66,8 @@ def main():
     with MAPPINGS_PATH.open("rb") as f:
         mappings = pickle.load(f)
 
-    id2user: dict[int, str] = mappings["idx2user"]
-    id2item: dict[int, str] = mappings["idx2item"]
+    id2user: dict[int, str] = mappings["id2user"]
+    id2item: dict[int, str] = mappings["id2item"]
 
     num_users = user_emb.size(0)
     num_items = item_emb.size(0)

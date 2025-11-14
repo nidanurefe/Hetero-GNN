@@ -9,3 +9,4 @@ torch
 torch_geometric
 matplotlib
 pyyaml
+scikit-learn
