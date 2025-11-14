@@ -505,3 +505,114 @@
 2025-11-14 15:33:13 | INFO |   expected helpful_log = 1.3862943611198906
 2025-11-14 15:33:13 | INFO |   expected verified    = 1
 2025-11-14 15:33:13 | INFO | Spot check done
+2025-11-14 17:50:48 | INFO | Starting full preprocessing pipeline...
+2025-11-14 17:50:48 | INFO | Building interactions DataFrame...
+2025-11-14 17:50:48 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 17:50:48 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 17:50:48 | INFO | Finished parse_raw.
+2025-11-14 17:50:48 | INFO | Loaded interactions: 70922
+2025-11-14 17:50:51 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 17:50:51 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 17:50:51 | INFO | Preprocessing pipeline finished.
+2025-11-14 17:50:51 | INFO | Building heterogenous bipartite graph...
+2025-11-14 17:50:51 | INFO | Loading processed interaction and feature files..
+2025-11-14 17:50:51 | INFO | Loaded 70,922 interactions.
+2025-11-14 17:50:51 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 17:50:51 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 17:50:51 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 17:50:51 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 17:50:51 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 17:50:51 | INFO | Constructing HeteroData graph...
+2025-11-14 17:50:51 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 17:50:51 | INFO | Graph build complete.
+2025-11-14 17:50:51 | INFO | Graph build complete.
+2025-11-14 17:50:51 | INFO | Starting train/val/test split process...
+2025-11-14 17:50:51 | INFO | Loaded interactions: 70922
+2025-11-14 17:50:51 | INFO | Train interactions: 62169
+2025-11-14 17:50:51 | INFO | Validation interactions: 1945
+2025-11-14 17:50:51 | INFO | Test interactions: 6808)
+2025-11-14 17:50:51 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 17:50:51 | INFO | Train/val/test split process completed.
+2025-11-14 17:52:57 | INFO | Starting full preprocessing pipeline...
+2025-11-14 17:52:57 | INFO | Building interactions DataFrame...
+2025-11-14 17:52:58 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 17:52:58 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 17:52:58 | INFO | Finished parse_raw.
+2025-11-14 17:52:58 | INFO | Starting train/val/test split process...
+2025-11-14 17:52:58 | INFO | Loaded interactions: 70922
+2025-11-14 17:52:58 | INFO | Train interactions: 62169
+2025-11-14 17:52:58 | INFO | Validation interactions: 1945
+2025-11-14 17:52:58 | INFO | Test interactions: 6808)
+2025-11-14 17:52:58 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 17:52:58 | INFO | Train/val/test split process completed.
+2025-11-14 17:52:58 | INFO | Loaded interactions: 70922
+2025-11-14 17:53:00 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 17:53:00 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 17:53:00 | INFO | Preprocessing pipeline finished.
+2025-11-14 17:53:00 | INFO | Building heterogenous bipartite graph...
+2025-11-14 17:53:00 | INFO | Loading processed interaction and feature files..
+2025-11-14 17:53:00 | INFO | Loaded 70,922 interactions.
+2025-11-14 17:53:00 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 17:53:00 | INFO | user.x shape = torch.Size([60144, 13])
+2025-11-14 17:53:00 | INFO | item.x shape = torch.Size([3391, 13])
+2025-11-14 17:53:00 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 17:53:00 | INFO | Edge split counts: train=62169, val=1945, test=6808
+2025-11-14 17:55:10 | INFO | Starting full preprocessing pipeline...
+2025-11-14 17:55:10 | INFO | Building interactions DataFrame...
+2025-11-14 17:55:10 | INFO | Saved interactions → data/processed/interactions.parquet
+2025-11-14 17:55:10 | INFO | Saved mappings → data/processed/mappings.pkl
+2025-11-14 17:55:10 | INFO | Finished parse_raw.
+2025-11-14 17:55:10 | INFO | Starting train/val/test split process...
+2025-11-14 17:55:11 | INFO | Loaded interactions: 70922
+2025-11-14 17:55:11 | INFO | Train interactions: 62169
+2025-11-14 17:55:11 | INFO | Validation interactions: 1945
+2025-11-14 17:55:11 | INFO | Test interactions: 6808)
+2025-11-14 17:55:11 | INFO | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-14 17:55:11 | INFO | Train/val/test split process completed.
+2025-11-14 17:55:11 | INFO | Loaded interactions: 70922
+2025-11-14 17:55:13 | INFO | Saved user features to data/processed/user_features.parquet
+2025-11-14 17:55:13 | INFO | Saved item features to data/processed/item_features.parquet
+2025-11-14 17:55:13 | INFO | Preprocessing pipeline finished.
+2025-11-14 17:55:13 | INFO | Building heterogenous bipartite graph...
+2025-11-14 17:55:13 | INFO | Loading processed interaction and feature files..
+2025-11-14 17:55:13 | INFO | Loaded 70,922 interactions.
+2025-11-14 17:55:13 | INFO | Users: 60,144 | Items: 3,391
+2025-11-14 17:55:13 | INFO | user.x shape = torch.Size([60144, 8])
+2025-11-14 17:55:13 | INFO | item.x shape = torch.Size([3391, 8])
+2025-11-14 17:55:13 | INFO | edge_index shape = torch.Size([2, 70922])
+2025-11-14 17:55:13 | INFO | edge_attribute shape = torch.Size([70922, 4])
+2025-11-14 17:55:13 | INFO | Edge split counts: train=62169, val=1945, test=6808
+2025-11-14 17:55:13 | INFO | Constructing HeteroData graph...
+2025-11-14 17:55:13 | INFO | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-14 17:55:13 | INFO | Graph build complete.
+2025-11-14 17:55:13 | INFO | Graph build complete.
+2025-11-14 18:09:00 | INFO | Loading hetero graph...
+2025-11-14 18:09:00 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:09:00 | INFO | Using device: cpu
+2025-11-14 18:09:00 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:09:10 | INFO | Loading hetero graph...
+2025-11-14 18:09:10 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:09:10 | INFO | Using device: cpu
+2025-11-14 18:09:10 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:09:59 | INFO | Loading hetero graph...
+2025-11-14 18:09:59 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:09:59 | INFO | Using device: cpu
+2025-11-14 18:09:59 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:11:00 | INFO | Loading hetero graph...
+2025-11-14 18:11:00 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:11:00 | INFO | Using device: cpu
+2025-11-14 18:11:00 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:11:11 | INFO | [Epoch 001] train_loss=0.4325  val_pairwise=0.8087
+2025-11-14 18:11:23 | INFO | [Epoch 002] train_loss=0.3577  val_pairwise=0.6108
+2025-11-14 18:11:34 | INFO | [Epoch 003] train_loss=0.3324  val_pairwise=0.6370
+2025-11-14 18:11:45 | INFO | [Epoch 004] train_loss=0.3270  val_pairwise=0.6514
+2025-11-14 18:11:57 | INFO | [Epoch 005] train_loss=0.3229  val_pairwise=0.6648
+2025-11-14 18:12:08 | INFO | [Epoch 006] train_loss=0.3186  val_pairwise=0.7733
+2025-11-14 18:12:20 | INFO | [Epoch 007] train_loss=0.3125  val_pairwise=0.8545
+2025-11-14 18:23:32 | INFO | Loading hetero graph...
+2025-11-14 18:23:32 | INFO | user_in_dim=8, item_in_dim=8
+2025-11-14 18:23:32 | INFO | Using device: cpu
+2025-11-14 18:23:32 | INFO | Train edges: 62169, Val edges: 1945
+2025-11-14 18:23:43 | INFO | [Epoch 001] train_loss=0.4341  val_pairwise=0.6427
+2025-11-14 18:23:54 | INFO | [Epoch 002] train_loss=0.3396  val_pairwise=0.6339
+2025-11-14 18:24:05 | INFO | [Epoch 003] train_loss=0.3286  val_pairwise=0.6632

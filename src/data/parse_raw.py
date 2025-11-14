@@ -5,9 +5,13 @@ from pathlib import Path
 import pandas as pd
 import pickle
 from src.app.logger import get_logger
+from src.app.config import get_config
 
-RAW_DATA_PATH = Path("data/raw/Magazine_Subscriptions.jsonl")
-PROCESSED_DATA_PATH = Path("data/processed")
+cfg = get_config()
+
+
+RAW_DATA_PATH = Path(cfg.data.raw_path)
+PROCESSED_DATA_PATH = Path(cfg.data.processed_dir)
 PROCESSED_DATA_PATH.mkdir(parents=True, exist_ok=True)
 
 # Used to store large DataFrames in a fast, compressed and columnar format.
