@@ -1209,3 +1209,23 @@
 2025-11-29 20:25:28 | INFO | __main__ | Saved user embeddings → data/processed/user_embeddings.parquet
 2025-11-29 20:25:28 | INFO | __main__ | Saved item embeddings → data/processed/item_embeddings.parquet
 2025-11-29 20:25:28 | INFO | __main__ | Export done.
+2025-11-29 20:31:12 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:31:12 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:31:12 | INFO | __main__ | Using device: cpu
+2025-11-29 20:31:12 | INFO | __main__ | Using HeteroGCNEncoder
+2025-11-29 20:31:12 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-29 20:31:17 | INFO | __main__ | [Epoch 001] train_loss=0.4200  val_pairwise=0.9147
+2025-11-29 20:31:21 | INFO | __main__ | [Epoch 002] train_loss=0.3053  val_pairwise=0.9265
+2025-11-29 20:31:26 | INFO | __main__ | [Epoch 003] train_loss=0.2926  val_pairwise=0.9290
+2025-11-29 20:31:31 | INFO | __main__ | [Epoch 004] train_loss=0.2869  val_pairwise=0.9378
+2025-11-29 20:31:35 | INFO | __main__ | [Epoch 005] train_loss=0.2823  val_pairwise=0.9522
+2025-11-29 20:31:35 | INFO | __main__ | Saved gcn model → data/processed/gcn_model.pt
+2025-11-29 20:31:39 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:31:39 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:31:39 | INFO | __main__ | Using device: cpu
+2025-11-29 20:31:39 | INFO | __main__ | Eval: Using HeteroGCNEncoder
+2025-11-29 20:31:39 | INFO | __main__ | Evaluating ranking metrics on TEST split...
+2025-11-29 20:31:40 | INFO | __main__ | Eval split='test': 6808 interactions, 6808 users with test items.
+2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=05 | HR@K=0.1896  P@K=0.0379  R@K=0.1896  NDCG@K=0.1225
+2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=10 | HR@K=0.2825  P@K=0.0282  R@K=0.2825  NDCG@K=0.1523
+2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=20 | HR@K=0.3928  P@K=0.0196  R@K=0.3928  NDCG@K=0.1803

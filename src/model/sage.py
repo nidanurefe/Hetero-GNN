@@ -6,7 +6,6 @@ import torch.nn.functional as F
 from torch_geometric.nn import HeteroConv, SAGEConv
 from torch_geometric.data import HeteroData
 
-
 class HeteroSAGEEncoder(nn.Module):
 
     def __init__(
