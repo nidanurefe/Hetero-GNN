@@ -15,12 +15,12 @@ data:
         # path: "data/raw/Movies.jsonl"
 
 model:
-  type: "gat"          
-  hidden_channels: 32
-  out_channels: 32
-  num_layers: 2
-  heads: 2
-  dropout: 0.1
+  type: "gcn"          # gat | sage | gcn
+  hidden_channels: 32 # hidden embedding size, increase if underfits, decrease if overfits
+  out_channels: 32 # final embedding size
+  num_layers: 2 # 2 hop neighborhood
+  heads: 2   # number of attention heads
+  dropout: 0.1    # dropout rate
   edge_dim: 4
 
 training:
@@ -30,7 +30,7 @@ training:
   val_batch_size: 1024
   learning_rate: 0.001
   weight_decay: 0.0
-  reg_lambda: 0.0001
+  reg_lambda: 0.0001 # L2 regularization coefficient
   device: "auto"              # auto | cpu | cuda
 
 logging:

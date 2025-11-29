@@ -6,6 +6,8 @@ from src.app.config import get_config
 from src.app.logger import get_logger
 from src.data.prepare_dataset import get_dataloader
 from src.model.gat import HeteroGATEncoder, bpr_loss, bpr_softplus_loss
+from src.model.sage import HeteroSAGEEncoder
+from src.model.gcn import HeteroGCNEncoder  
 
 logger = get_logger(__name__)
 cfg = get_config()
@@ -102,16 +104,43 @@ def main():
 
     logger.info(f"Using device: {device}")
 
-    model = HeteroGATEncoder(
-        in_channels_user=user_in,
-        in_channels_item=item_in,
-        hidden_channels=cfg.model.hidden_channels,
-        out_channels=cfg.model.out_channels,
-        num_layers=cfg.model.num_layers,
-        heads=cfg.model.heads,
-        dropout=cfg.model.dropout,
-        edge_dim=cfg.model.edge_dim,
-    ).to(device)
+    if cfg.model.type == "gat":
+        logger.info("Using HeteroGATEncoder")
+        model = HeteroGATEncoder(
+            in_channels_user=user_in,
+            in_channels_item=item_in,
+            hidden_channels=cfg.model.hidden_channels,
+            out_channels=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
+            heads=cfg.model.heads,
+            dropout=cfg.model.dropout,
+            edge_dim=cfg.model.edge_dim,
+        ).to(device)
+
+    elif cfg.model.type == "sage":
+        logger.info("Using HeteroSAGEEncoder")
+        model = HeteroSAGEEncoder(
+            in_channels_user=user_in,
+            in_channels_item=item_in,
+            hidden_channels=cfg.model.hidden_channels,
+            out_channels=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
+            dropout=cfg.model.dropout,
+        ).to(device)
+
+    elif cfg.model.type == "gcn":
+        logger.info("Using HeteroGCNEncoder")
+        model = HeteroGCNEncoder(
+            in_channels_user=user_in,
+            in_channels_item=item_in,
+            hidden_channels=cfg.model.hidden_channels,
+            out_channels=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
+            dropout=cfg.model.dropout,
+        ).to(device)
+
+    else:
+        raise ValueError(f"Unknown model.type: {cfg.model.type}")
 
     optimizer = optim.Adam(
         model.parameters(),
@@ -149,9 +178,9 @@ def main():
             f"val_pairwise={val_pairwise:.4f}"
         )
 
-    model_path = PROCESSED_DIR / "gat_model.pt"
+    model_path = PROCESSED_DIR / f"{cfg.model.type}_model.pt"
     torch.save(model.state_dict(), model_path)
-    logger.info(f"Saved GAT model → {model_path}")
+    logger.info(f"Saved {cfg.model.type} model → {model_path}")
 
 
 if __name__ == "__main__":

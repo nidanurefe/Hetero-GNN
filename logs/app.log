@@ -1098,3 +1098,114 @@
 2025-11-14 21:04:13 | INFO | __main__ | Total items: 3391
 2025-11-14 21:04:13 | INFO | __main__ | Sampling 2000 items for visualization...
 2025-11-14 21:04:13 | INFO | __main__ | Running t-SNE (this may take a bit)...
+2025-11-17 12:48:52 | INFO | __main__ | Starting pipeline...
+2025-11-17 12:48:52 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine)
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 70922 rows, 60144 users, 3391 items, domains=['magazine']
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-11-17 12:48:52 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-11-17 12:48:52 | INFO | __main__ | Step 2: Splitting interactions...
+2025-11-17 12:48:52 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Loaded interactions: 70922
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Train interactions: 62169
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Validation interactions: 1945
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Test interactions: 6808)
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-11-17 12:48:53 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-11-17 12:48:53 | INFO | __main__ | Step 3: Building user/item features...
+2025-11-17 12:48:53 | INFO | src.data.build_features | Loaded interactions: 70922
+2025-11-17 12:48:55 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-11-17 12:48:55 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-11-17 12:48:55 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Loaded 70,922 interactions.
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Users: 60,144 | Items: 3,391
+2025-11-17 12:48:55 | INFO | src.data.build_graph | user.x shape = torch.Size([60144, 8])
+2025-11-17 12:48:55 | INFO | src.data.build_graph | item.x shape = torch.Size([3391, 8])
+2025-11-17 12:48:55 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 70922])
+2025-11-17 12:48:55 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([70922, 4])
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Edge split counts: train=62169, val=1945, test=6808
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-11-17 12:48:55 | INFO | src.data.build_graph | Graph build complete.
+2025-11-17 12:48:55 | INFO | __main__ | Step 5: Training GAT model...
+2025-11-17 12:48:55 | INFO | src.train.train_gat | Loading hetero graph...
+2025-11-17 12:48:55 | INFO | src.train.train_gat | user_in_dim=8, item_in_dim=8
+2025-11-17 12:48:55 | INFO | src.train.train_gat | Using device: cpu
+2025-11-17 12:48:55 | INFO | src.train.train_gat | Train edges: 62169, Val edges: 1945
+2025-11-17 12:49:10 | INFO | src.train.train_gat | [Epoch 001] train_loss=0.4575  val_pairwise=0.8771
+2025-11-17 12:49:24 | INFO | src.train.train_gat | [Epoch 002] train_loss=0.3532  val_pairwise=0.7578
+2025-11-17 12:49:39 | INFO | src.train.train_gat | [Epoch 003] train_loss=0.3283  val_pairwise=0.7712
+2025-11-17 12:49:54 | INFO | src.train.train_gat | [Epoch 004] train_loss=0.3143  val_pairwise=0.8566
+2025-11-17 12:50:08 | INFO | src.train.train_gat | [Epoch 005] train_loss=0.3057  val_pairwise=0.8833
+2025-11-17 12:50:08 | INFO | src.train.train_gat | Saved GAT model → data/processed/gat_model.pt
+2025-11-17 12:50:08 | INFO | __main__ | Step 6: Exporting embeddings...
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | Loading hetero graph...
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | user_in_dim=8, item_in_dim=8
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | Using device: cpu
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | Saved user embeddings → data/processed/user_embeddings.parquet
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | Saved item embeddings → data/processed/item_embeddings.parquet
+2025-11-17 12:50:08 | INFO | src.export.export_embeddings | Export done.
+2025-11-17 12:50:08 | INFO | __main__ | Pipeline completed successfully!
+2025-11-29 20:17:33 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:17:33 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:17:33 | INFO | __main__ | Using device: cpu
+2025-11-29 20:17:33 | INFO | __main__ | Using HeteroSAGEEncoder
+2025-11-29 20:17:33 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-29 20:17:39 | INFO | __main__ | [Epoch 001] train_loss=0.4504  val_pairwise=0.9244
+2025-11-29 20:17:45 | INFO | __main__ | [Epoch 002] train_loss=0.2950  val_pairwise=0.9275
+2025-11-29 20:17:51 | INFO | __main__ | [Epoch 003] train_loss=0.2842  val_pairwise=0.9378
+2025-11-29 20:17:57 | INFO | __main__ | [Epoch 004] train_loss=0.2809  val_pairwise=0.9388
+2025-11-29 20:18:04 | INFO | __main__ | [Epoch 005] train_loss=0.2778  val_pairwise=0.9440
+2025-11-29 20:18:04 | INFO | __main__ | Saved GAT model → data/processed/gat_model.pt
+2025-11-29 20:18:16 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:18:16 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:18:16 | INFO | __main__ | Using device: cpu
+2025-11-29 20:18:16 | INFO | __main__ | Export: Using HeteroSAGEEncoder
+2025-11-29 20:19:48 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:19:48 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:19:48 | INFO | __main__ | Using device: cpu
+2025-11-29 20:19:48 | INFO | __main__ | Using HeteroSAGEEncoder
+2025-11-29 20:19:48 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-29 20:19:54 | INFO | __main__ | [Epoch 001] train_loss=0.4520  val_pairwise=0.9198
+2025-11-29 20:20:00 | INFO | __main__ | [Epoch 002] train_loss=0.3027  val_pairwise=0.9254
+2025-11-29 20:20:05 | INFO | __main__ | [Epoch 003] train_loss=0.2883  val_pairwise=0.9352
+2025-11-29 20:20:11 | INFO | __main__ | [Epoch 004] train_loss=0.2827  val_pairwise=0.9393
+2025-11-29 20:20:17 | INFO | __main__ | [Epoch 005] train_loss=0.2799  val_pairwise=0.9383
+2025-11-29 20:20:17 | INFO | __main__ | Saved sage model → data/processed/sage_model.pt
+2025-11-29 20:20:51 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:20:51 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:20:51 | INFO | __main__ | Using device: cpu
+2025-11-29 20:20:51 | INFO | __main__ | Export: Using HeteroSAGEEncoder
+2025-11-29 20:20:51 | INFO | __main__ | Loading trained weights from data/processed/sage_model.pt ...
+2025-11-29 20:20:51 | INFO | __main__ | Saved user embeddings → data/processed/user_embeddings.parquet
+2025-11-29 20:20:51 | INFO | __main__ | Saved item embeddings → data/processed/item_embeddings.parquet
+2025-11-29 20:20:51 | INFO | __main__ | Export done.
+2025-11-29 20:23:56 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:23:56 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:23:56 | INFO | __main__ | Using device: cpu
+2025-11-29 20:23:56 | INFO | __main__ | Using HeteroGCNEncoder
+2025-11-29 20:23:56 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-29 20:24:50 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:24:50 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:24:50 | INFO | __main__ | Using device: cpu
+2025-11-29 20:24:50 | INFO | __main__ | Using HeteroGCNEncoder
+2025-11-29 20:24:50 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-29 20:24:55 | INFO | __main__ | [Epoch 001] train_loss=0.4300  val_pairwise=0.9172
+2025-11-29 20:25:00 | INFO | __main__ | [Epoch 002] train_loss=0.3059  val_pairwise=0.9285
+2025-11-29 20:25:05 | INFO | __main__ | [Epoch 003] train_loss=0.2903  val_pairwise=0.9373
+2025-11-29 20:25:10 | INFO | __main__ | [Epoch 004] train_loss=0.2848  val_pairwise=0.9332
+2025-11-29 20:25:14 | INFO | __main__ | [Epoch 005] train_loss=0.2821  val_pairwise=0.9424
+2025-11-29 20:25:14 | INFO | __main__ | Saved gcn model → data/processed/gcn_model.pt
+2025-11-29 20:25:28 | INFO | __main__ | Loading hetero graph...
+2025-11-29 20:25:28 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-29 20:25:28 | INFO | __main__ | Using device: cpu
+2025-11-29 20:25:28 | INFO | __main__ | Export: Using HeteroGCNEncoder
+2025-11-29 20:25:28 | INFO | __main__ | Loading trained weights from data/processed/gcn_model.pt ...
+2025-11-29 20:25:28 | INFO | __main__ | Saved user embeddings → data/processed/user_embeddings.parquet
+2025-11-29 20:25:28 | INFO | __main__ | Saved item embeddings → data/processed/item_embeddings.parquet
+2025-11-29 20:25:28 | INFO | __main__ | Export done.

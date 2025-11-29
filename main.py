@@ -1,5 +1,11 @@
 from src.app.logger import get_logger
 
+
+# TODO: early stopping ekle
+# TODO: best model state tut 
+# TODO: yeni değerlendirme metrikleri ekle
+
+
 # DATA
 from src.data.parse_raw import main as parse_main
 from src.data.split_interactions import main as split_main
