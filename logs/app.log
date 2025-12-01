@@ -1229,3 +1229,36 @@
 2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=05 | HR@K=0.1896  P@K=0.0379  R@K=0.1896  NDCG@K=0.1225
 2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=10 | HR@K=0.2825  P@K=0.0282  R@K=0.2825  NDCG@K=0.1523
 2025-11-29 20:31:41 | INFO | __main__ | [TEST] K=20 | HR@K=0.3928  P@K=0.0196  R@K=0.3928  NDCG@K=0.1803
+2025-11-30 20:43:29 | INFO | __main__ | Loading hetero graph...
+2025-11-30 20:43:29 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-30 20:43:29 | INFO | __main__ | Using device: cpu
+2025-11-30 20:43:29 | INFO | __main__ | Using HeteroGATEncoder
+2025-11-30 20:43:29 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-30 20:43:43 | INFO | __main__ | [Epoch 001] train_loss=0.4248  val_pairwise=0.7023
+2025-11-30 20:43:58 | INFO | __main__ | [Epoch 002] train_loss=0.3651  val_pairwise=0.5537
+2025-11-30 20:44:13 | INFO | __main__ | [Epoch 003] train_loss=0.3360  val_pairwise=0.6082
+2025-11-30 20:44:28 | INFO | __main__ | [Epoch 004] train_loss=0.3271  val_pairwise=0.6802
+2025-11-30 20:44:43 | INFO | __main__ | [Epoch 005] train_loss=0.3208  val_pairwise=0.7301
+2025-11-30 20:44:43 | INFO | __main__ | Saved gat model → data/processed/gat_model.pt
+2025-11-30 20:47:08 | INFO | __main__ | Loading hetero graph...
+2025-11-30 20:47:08 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-11-30 20:47:08 | INFO | __main__ | Using device: cpu
+2025-11-30 20:47:08 | INFO | __main__ | Using LightGCNEncoder
+2025-11-30 20:47:08 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-11-30 20:47:12 | INFO | __main__ | [Epoch 001] train_loss=0.3571  val_pairwise=0.9758
+2025-11-30 20:47:16 | INFO | __main__ | [Epoch 002] train_loss=0.3307  val_pairwise=0.9712
+2025-11-30 20:47:19 | INFO | __main__ | [Epoch 003] train_loss=0.3122  val_pairwise=0.9650
+2025-11-30 20:47:23 | INFO | __main__ | [Epoch 004] train_loss=0.2953  val_pairwise=0.9496
+2025-11-30 20:47:27 | INFO | __main__ | [Epoch 005] train_loss=0.2843  val_pairwise=0.9455
+2025-11-30 20:47:27 | INFO | __main__ | Saved lightgcn model → data/processed/lightgcn_model.pt
+2025-12-01 11:31:45 | INFO | __main__ | Loading hetero graph...
+2025-12-01 11:31:45 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-01 11:31:45 | INFO | __main__ | Using device: cpu
+2025-12-01 11:31:45 | INFO | __main__ | Using LightGCNEncoder
+2025-12-01 11:31:45 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-12-01 11:31:49 | INFO | __main__ | [Epoch 001] train_loss=0.3569  val_pairwise=0.9830
+2025-12-01 11:31:53 | INFO | __main__ | [Epoch 002] train_loss=0.3296  val_pairwise=0.9697
+2025-12-01 11:31:57 | INFO | __main__ | [Epoch 003] train_loss=0.3100  val_pairwise=0.9650
+2025-12-01 11:32:01 | INFO | __main__ | [Epoch 004] train_loss=0.2935  val_pairwise=0.9553
+2025-12-01 11:32:05 | INFO | __main__ | [Epoch 005] train_loss=0.2820  val_pairwise=0.9506
+2025-12-01 11:32:05 | INFO | __main__ | Saved lightgcn model → data/processed/lightgcn_model.pt

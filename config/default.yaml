@@ -3,19 +3,19 @@ data:
   
   raw:
     target: 
-      name: "magazine"
-      path: "data/raw/Magazine_Subscriptions.jsonl"
+      name: "music"
+      path: "data/raw/Digital_Music.jsonl"
 
     sources: 
-      - name: "magazine"
-        path: "data/raw/Magazine_Subscriptions.jsonl"
+      - name: "movies_and_tv"
+        path: "data/raw/Movies_and_TV.jsonl"
       # - name: "appliances"
       #   path: "data/raw/Appliances.jsonl"
       # - name: "movies"
         # path: "data/raw/Movies.jsonl"
 
 model:
-  type: "gcn"          # gat | sage | gcn
+  type: "lightgcn"   # gat | sage | gcn | lightgcn
   hidden_channels: 32 # hidden embedding size, increase if underfits, decrease if overfits
   out_channels: 32 # final embedding size
   num_layers: 2 # 2 hop neighborhood
@@ -30,7 +30,7 @@ training:
   val_batch_size: 1024
   learning_rate: 0.001
   weight_decay: 0.0
-  reg_lambda: 0.0001 # L2 regularization coefficient
+  reg_lambda: 0.0001    # L2 regularization coefficient
   device: "auto"              # auto | cpu | cuda
 
 logging:

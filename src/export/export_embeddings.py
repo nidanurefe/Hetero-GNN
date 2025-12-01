@@ -8,6 +8,7 @@ from src.app.logger import get_logger
 from src.model.gat import HeteroGATEncoder
 from src.model.sage import HeteroSAGEEncoder  
 from src.model.gcn import HeteroGCNEncoder  
+from src.model.lightgcn import LightGCNEncoder
 
 logger = get_logger(__name__)
 cfg = get_config()
@@ -58,6 +59,19 @@ def build_encoder(user_in: int, item_in: int, device: torch.device):
             num_layers=cfg.model.num_layers,
             dropout=cfg.model.dropout,
         ).to(device)
+
+    elif cfg.model.type == "lightgcn":
+        logger.info("Export: Using LightGCNEncoder")
+        num_users = data["user"].x.size(0)
+        num_items = data["item"].x.size(0)
+        model = LightGCNEncoder(
+            num_users=num_users,
+            num_items=num_items,
+            embedding_dim=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
+        ).to(device)
+
+    
 
     else:
         raise ValueError(f"Unknown model.type: {cfg.model.type}")

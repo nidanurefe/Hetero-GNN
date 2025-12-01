@@ -8,6 +8,7 @@ from src.data.prepare_dataset import get_dataloader
 from src.model.gat import HeteroGATEncoder, bpr_loss, bpr_softplus_loss
 from src.model.sage import HeteroSAGEEncoder
 from src.model.gcn import HeteroGCNEncoder  
+from src.model.lightgcn import LightGCNEncoder
 
 logger = get_logger(__name__)
 cfg = get_config()
@@ -137,6 +138,17 @@ def main():
             out_channels=cfg.model.out_channels,
             num_layers=cfg.model.num_layers,
             dropout=cfg.model.dropout,
+        ).to(device)
+
+    elif cfg.model.type == "lightgcn":
+        logger.info("Using LightGCNEncoder")
+        num_users = data["user"].x.size(0)
+        num_items = data["item"].x.size(0)
+        model = LightGCNEncoder(
+            num_users=num_users,
+            num_items=num_items,
+            embedding_dim=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
         ).to(device)
 
     else:
