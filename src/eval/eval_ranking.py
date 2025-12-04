@@ -11,6 +11,7 @@ from src.app.logger import get_logger
 from src.model.gat import HeteroGATEncoder
 from src.model.sage import HeteroSAGEEncoder
 from src.model.gcn import HeteroGCNEncoder
+from src.model.lightgcn import LightGCNEncoder
 from src.eval.metrics import precision_recall_at_k, ndcg_at_k
 
 logger = get_logger(__name__)
@@ -20,7 +21,7 @@ PROCESSED_DIR = Path(cfg.data.processed_dir)
 GRAPH_PATH = PROCESSED_DIR / "hetero_graph.pt"
 
 
-def build_encoder(user_in: int, item_in: int, device: torch.device):
+def build_encoder(user_in: int, item_in: int, device: torch.device, data: dict):
     if cfg.model.type == "gat":
         logger.info("Eval: Using HeteroGATEncoder")
         model = HeteroGATEncoder(
@@ -55,6 +56,19 @@ def build_encoder(user_in: int, item_in: int, device: torch.device):
             num_layers=cfg.model.num_layers,
             dropout=cfg.model.dropout,
         ).to(device)
+
+
+    elif cfg.model.type == "lightgcn":
+        from src.model.lightgcn import LightGCNEncoder
+        logger.info("Eval: Using LightGCNEncoder")
+        model = LightGCNEncoder(
+            num_items=item_in,
+            num_users=user_in,
+            embedding_dim=cfg.model.out_channels,
+            num_layers=cfg.model.num_layers,
+        ).to(device)
+
+    
     else:
         raise ValueError(f"Unknown model.type: {cfg.model.type}")
 
@@ -167,7 +181,7 @@ def main():
     logger.info(f"Using device: {device}")
 
     # model
-    model = build_encoder(user_in, item_in, device)
+    model = build_encoder(user_in, item_in, device, data)
 
     model_path = PROCESSED_DIR / f"{cfg.model.type}_model.pt"
     if not model_path.exists():

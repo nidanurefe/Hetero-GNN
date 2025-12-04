@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 import yaml
-from typing import List
+from typing import List, Optional
 
 
 @dataclass
@@ -34,6 +34,14 @@ class ModelConfig:
 
 
 @dataclass
+class EarlyStoppingConfig:
+    metric: str = "ndcg@10" 
+    mode: str = "max"      
+    patience: int = 2
+    min_delta: float = 0.0
+    eval_k: int = 10
+
+@dataclass
 class TrainingConfig:
     loss_type: str = "bpr_softplus"
     num_epochs: int = 25
@@ -43,6 +51,8 @@ class TrainingConfig:
     weight_decay: float = 0.0
     reg_lambda: float = 1e-4
     device: str = "auto"   # "auto" | "cpu" | "cuda"
+    early_stopping: Optional[EarlyStoppingConfig] = None
+
 
 
 @dataclass
@@ -59,7 +69,6 @@ class Config:
 
 
 # Config Loader
-
 _DEFAULT_CONFIG_PATH = Path("config/default.yaml")
 _config_cache: Config | None = None
 
@@ -74,11 +83,30 @@ def load_config() -> Config:
     data_cfg = raw_cfg["data"]
     train_cfg = raw_cfg["training"]
     model_cfg = raw_cfg["model"]
+    logging_cfg = raw_cfg.get("logging", {"level": "INFO"})
 
+    # raw datasets
     target_cfg = data_cfg["raw"]["target"]
     sources_cfg = data_cfg["raw"]["sources"]
 
-    logging_cfg = raw_cfg.get("logging", {})
+    # early stopping
+    es_raw = train_cfg.get("early_stopping")
+    if es_raw is not None:
+        es_cfg = EarlyStoppingConfig(**es_raw)
+    else:
+        es_cfg = None
+
+    training = TrainingConfig(
+        loss_type=train_cfg.get("loss_type", "bpr_softplus"),
+        num_epochs=train_cfg.get("num_epochs", 25),
+        batch_size=train_cfg.get("batch_size", 512),
+        val_batch_size=train_cfg.get("val_batch_size", 1024),
+        learning_rate=train_cfg.get("learning_rate", 1e-3),
+        weight_decay=train_cfg.get("weight_decay", 0.0),
+        reg_lambda=train_cfg.get("reg_lambda", 1e-4),
+        device=train_cfg.get("device", "auto"),
+        early_stopping=es_cfg,
+    )
 
     cfg = Config(
         data=DataConfig(
@@ -86,10 +114,9 @@ def load_config() -> Config:
             raw=RawConfig(
                 target=RawDatasetConfig(**target_cfg),
                 sources=[RawDatasetConfig(**s) for s in sources_cfg],
-                
             ),
         ),
-        training=TrainingConfig(**train_cfg),
+        training=training,
         model=ModelConfig(**model_cfg),
         logging=LoggingConfig(**logging_cfg),
     )

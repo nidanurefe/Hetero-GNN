@@ -24,7 +24,7 @@ USER_EMB_PATH = PROCESSED_DIR / "user_embeddings.parquet"
 ITEM_EMB_PATH = PROCESSED_DIR / "item_embeddings.parquet"
 
 
-def build_encoder(user_in: int, item_in: int, device: torch.device):
+def build_encoder(user_in: int, item_in: int, device: torch.device, data: dict):
     if cfg.model.type == "gat":
         logger.info("Export: Using HeteroGATEncoder")
         model = HeteroGATEncoder(

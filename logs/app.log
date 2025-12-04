@@ -1262,3 +1262,369 @@
 2025-12-01 11:32:01 | INFO | __main__ | [Epoch 004] train_loss=0.2935  val_pairwise=0.9553
 2025-12-01 11:32:05 | INFO | __main__ | [Epoch 005] train_loss=0.2820  val_pairwise=0.9506
 2025-12-01 11:32:05 | INFO | __main__ | Saved lightgcn model → data/processed/lightgcn_model.pt
+2025-12-01 11:38:08 | INFO | __main__ | Loading hetero graph...
+2025-12-01 11:38:08 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-01 11:38:08 | INFO | __main__ | Using device: cpu
+2025-12-01 11:38:08 | INFO | __main__ | Using LightGCNEncoder
+2025-12-01 11:38:08 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-12-01 11:45:41 | INFO | __main__ | Loading hetero graph...
+2025-12-01 11:45:41 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-01 11:45:41 | INFO | __main__ | Using device: cpu
+2025-12-01 11:45:41 | INFO | __main__ | Using LightGCNEncoder
+2025-12-01 11:45:41 | INFO | __main__ | Train edges: 62169, Val edges: 1945
+2025-12-01 11:45:45 | INFO | __main__ | [Epoch 001] train_loss=0.3555  val_pairwise=0.9769
+2025-12-01 11:45:49 | INFO | __main__ | [Epoch 002] train_loss=0.3279  val_pairwise=0.9738
+2025-12-01 11:45:53 | INFO | __main__ | [Epoch 003] train_loss=0.3084  val_pairwise=0.9630
+2025-12-01 11:45:57 | INFO | __main__ | [Epoch 004] train_loss=0.2924  val_pairwise=0.9419
+2025-12-01 11:46:01 | INFO | __main__ | [Epoch 005] train_loss=0.2821  val_pairwise=0.9368
+2025-12-01 11:46:01 | INFO | __main__ | Saved lightgcn model → data/processed/lightgcn_model.pt
+2025-12-01 11:46:54 | INFO | __main__ | Starting pipeline...
+2025-12-01 11:46:54 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-12-01 11:46:54 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-12-01 11:46:54 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Digital_Music.jsonl (domain=music)
+2025-12-01 11:46:54 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Movies_and_TV.jsonl (domain=movies_and_tv)
+2025-12-01 11:48:24 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 17287312 rows, 6554112 users, 818429 items, domains=['music', 'movies_and_tv']
+2025-12-01 11:49:03 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-12-01 11:49:06 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-12-01 11:49:06 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-12-01 11:49:10 | INFO | __main__ | Step 2: Splitting interactions...
+2025-12-01 11:49:10 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-12-01 11:49:18 | INFO | src.data.split_interactions | Loaded interactions: 17287312
+2025-12-01 11:50:00 | INFO | src.data.split_interactions | Train interactions: 13089551
+2025-12-01 11:50:00 | INFO | src.data.split_interactions | Validation interactions: 1526257
+2025-12-01 11:50:01 | INFO | src.data.split_interactions | Test interactions: 2671504)
+2025-12-01 11:50:16 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-12-01 11:50:17 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-12-01 11:50:17 | INFO | __main__ | Step 3: Building user/item features...
+2025-12-01 11:50:25 | INFO | src.data.build_features | Loaded interactions: 17287312
+2025-12-01 11:55:06 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-12-01 11:55:06 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-12-01 11:55:07 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-12-01 11:55:07 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-12-01 11:55:07 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-12-01 11:55:24 | INFO | src.data.build_graph | Loaded 17,287,312 interactions.
+2025-12-01 11:55:24 | INFO | src.data.build_graph | Users: 6,554,112 | Items: 818,429
+2025-12-01 11:55:24 | INFO | src.data.build_graph | user.x shape = torch.Size([6554112, 8])
+2025-12-01 11:55:24 | INFO | src.data.build_graph | item.x shape = torch.Size([818429, 8])
+2025-12-01 11:55:24 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 17287312])
+2025-12-01 11:55:27 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([17287312, 4])
+2025-12-01 11:55:28 | INFO | src.data.build_graph | Edge split counts: train=13089551, val=1526257, test=2671504
+2025-12-01 11:55:28 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-12-01 11:55:29 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-12-01 11:55:31 | INFO | src.data.build_graph | Graph build complete.
+2025-12-01 11:55:31 | INFO | __main__ | Step 5: Training GAT model...
+2025-12-01 11:55:31 | INFO | src.train.train | Loading hetero graph...
+2025-12-01 11:55:31 | INFO | src.train.train | user_in_dim=8, item_in_dim=8
+2025-12-01 11:55:31 | INFO | src.train.train | Using device: cpu
+2025-12-01 11:55:31 | INFO | src.train.train | Using LightGCNEncoder
+2025-12-01 11:55:33 | INFO | src.train.train | Train edges: 13089551, Val edges: 1526257
+2025-12-04 18:29:03 | INFO | __main__ | Starting pipeline...
+2025-12-04 18:29:03 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-12-04 18:29:03 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-12-04 18:29:03 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-12-04 18:29:08 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine_subscriptions)
+2025-12-04 18:29:10 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['appliances', 'magazine_subscriptions']
+2025-12-04 18:29:13 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-12-04 18:29:14 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-12-04 18:29:14 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-12-04 18:29:14 | INFO | __main__ | Step 2: Splitting interactions...
+2025-12-04 18:29:14 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-12-04 18:29:15 | INFO | src.data.split_interactions | Loaded interactions: 2176870
+2025-12-04 18:29:24 | INFO | src.data.split_interactions | Train interactions: 1854935
+2025-12-04 18:29:24 | INFO | src.data.split_interactions | Validation interactions: 66293
+2025-12-04 18:29:24 | INFO | src.data.split_interactions | Test interactions: 255642)
+2025-12-04 18:29:25 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-12-04 18:29:25 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-12-04 18:29:25 | INFO | __main__ | Step 3: Building user/item features...
+2025-12-04 18:29:26 | INFO | src.data.build_features | Loaded interactions: 2176870
+2025-12-04 18:30:37 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-12-04 18:30:37 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-12-04 18:30:37 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-12-04 18:30:37 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-12-04 18:30:37 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-12-04 18:30:38 | INFO | src.data.build_graph | Loaded 2,176,870 interactions.
+2025-12-04 18:30:38 | INFO | src.data.build_graph | Users: 1,807,292 | Items: 107,628
+2025-12-04 18:30:38 | INFO | src.data.build_graph | user.x shape = torch.Size([1807292, 8])
+2025-12-04 18:30:38 | INFO | src.data.build_graph | item.x shape = torch.Size([107628, 8])
+2025-12-04 18:30:38 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 2176870])
+2025-12-04 18:30:38 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([2176870, 4])
+2025-12-04 18:30:39 | INFO | src.data.build_graph | Edge split counts: train=1854935, val=66293, test=255642
+2025-12-04 18:30:39 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-12-04 18:30:39 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-12-04 18:30:39 | INFO | src.data.build_graph | Graph build complete.
+2025-12-04 18:30:39 | INFO | __main__ | Step 5: Training model...
+2025-12-04 18:30:39 | INFO | src.train.train | Loading hetero graph...
+2025-12-04 18:30:39 | INFO | src.train.train | user_in_dim=8, item_in_dim=8
+2025-12-04 18:30:39 | INFO | src.train.train | Using device: cpu
+2025-12-04 18:30:39 | INFO | src.train.train | Using LightGCNEncoder
+2025-12-04 18:30:39 | INFO | src.train.train | Train edges: 1854935, Val edges: 66293
+2025-12-04 18:31:00 | INFO | __main__ | Starting pipeline...
+2025-12-04 18:31:00 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-12-04 18:31:00 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-12-04 18:31:00 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Appliances.jsonl (domain=appliances)
+2025-12-04 18:31:04 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine_subscriptions)
+2025-12-04 18:31:06 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 2176870 rows, 1807292 users, 107628 items, domains=['appliances', 'magazine_subscriptions']
+2025-12-04 18:31:10 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-12-04 18:31:10 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-12-04 18:31:10 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-12-04 18:31:10 | INFO | __main__ | Step 2: Splitting interactions...
+2025-12-04 18:31:10 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-12-04 18:31:11 | INFO | src.data.split_interactions | Loaded interactions: 2176870
+2025-12-04 18:31:20 | INFO | src.data.split_interactions | Train interactions: 1854935
+2025-12-04 18:31:20 | INFO | src.data.split_interactions | Validation interactions: 66293
+2025-12-04 18:31:20 | INFO | src.data.split_interactions | Test interactions: 255642)
+2025-12-04 18:31:22 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-12-04 18:31:22 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-12-04 18:31:22 | INFO | __main__ | Step 3: Building user/item features...
+2025-12-04 18:31:23 | INFO | src.data.build_features | Loaded interactions: 2176870
+2025-12-04 18:32:35 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-12-04 18:32:35 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-12-04 18:32:35 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-12-04 18:32:35 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-12-04 18:32:35 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Loaded 2,176,870 interactions.
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Users: 1,807,292 | Items: 107,628
+2025-12-04 18:32:37 | INFO | src.data.build_graph | user.x shape = torch.Size([1807292, 8])
+2025-12-04 18:32:37 | INFO | src.data.build_graph | item.x shape = torch.Size([107628, 8])
+2025-12-04 18:32:37 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 2176870])
+2025-12-04 18:32:37 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([2176870, 4])
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Edge split counts: train=1854935, val=66293, test=255642
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-12-04 18:32:37 | INFO | src.data.build_graph | Graph build complete.
+2025-12-04 18:32:37 | INFO | __main__ | Step 5: Training model...
+2025-12-04 18:32:37 | INFO | src.train.train | Loading hetero graph...
+2025-12-04 18:32:37 | INFO | src.train.train | user_in_dim=8, item_in_dim=8
+2025-12-04 18:32:37 | INFO | src.train.train | Using device: cpu
+2025-12-04 18:32:37 | INFO | src.train.train | Using LightGCNEncoder
+2025-12-04 18:32:38 | INFO | src.train.train | Train edges: 1854935, Val edges: 66293
+2025-12-04 18:37:44 | INFO | __main__ | Loading hetero graph...
+2025-12-04 18:37:44 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 18:37:44 | INFO | __main__ | Using device: cpu
+2025-12-04 18:37:44 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 18:37:44 | INFO | __main__ | Train edges: 1854935, Val edges: 66293
+2025-12-04 19:33:53 | INFO | __main__ | Loading hetero graph...
+2025-12-04 19:33:53 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 19:33:53 | INFO | __main__ | Using device: cpu
+2025-12-04 19:33:53 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 19:33:53 | INFO | __main__ | Train edges: 1854935, Val edges: 66293
+2025-12-04 19:35:04 | INFO | __main__ | Loading hetero graph...
+2025-12-04 19:35:04 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 19:35:04 | INFO | __main__ | Using device: cpu
+2025-12-04 19:35:04 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 19:35:04 | INFO | __main__ | Train edges: 1854935, Val edges: 66293
+2025-12-04 19:35:04 | INFO | __main__ | Starting training...
+2025-12-04 19:36:26 | INFO | __main__ | Loading hetero graph...
+2025-12-04 19:36:26 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 19:36:26 | INFO | __main__ | Using device: cpu
+2025-12-04 19:36:26 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 19:36:26 | INFO | __main__ | Train edges: 1854935, Val edges: 66293
+2025-12-04 19:36:26 | INFO | __main__ | Starting training...
+2025-12-04 20:09:54 | INFO | __main__ | Starting pipeline...
+2025-12-04 20:09:54 | INFO | __main__ | Step 1: Parsing raw datasets...
+2025-12-04 20:09:54 | INFO | src.data.parse_raw | Building interactions DataFrame...
+2025-12-04 20:09:54 | INFO | src.data.parse_raw | Reading target dataset: data/raw/Digital_Music.jsonl (domain=digital_music)
+2025-12-04 20:09:55 | INFO | src.data.parse_raw | Reading source dataset: data/raw/Magazine_Subscriptions.jsonl (domain=magazine_subscriptions)
+2025-12-04 20:09:55 | INFO | src.data.parse_raw | Built interactions from multiple datasets: 199686 rows, 160066 users, 73910 items, domains=['digital_music', 'magazine_subscriptions']
+2025-12-04 20:09:56 | INFO | src.data.parse_raw | Saved interactions → data/processed/interactions.parquet
+2025-12-04 20:09:56 | INFO | src.data.parse_raw | Saved mappings → data/processed/mappings.pkl
+2025-12-04 20:09:56 | INFO | src.data.parse_raw | Finished parse_raw.
+2025-12-04 20:09:56 | INFO | __main__ | Step 2: Splitting interactions...
+2025-12-04 20:09:56 | INFO | src.data.split_interactions | Starting train/val/test split process...
+2025-12-04 20:09:56 | INFO | src.data.split_interactions | Loaded interactions: 199686
+2025-12-04 20:09:57 | INFO | src.data.split_interactions | Train interactions: 173921
+2025-12-04 20:09:57 | INFO | src.data.split_interactions | Validation interactions: 6393
+2025-12-04 20:09:57 | INFO | src.data.split_interactions | Test interactions: 19372)
+2025-12-04 20:09:58 | INFO | src.data.split_interactions | Updated interactions with split column → data/processed/interactions.parquet
+2025-12-04 20:09:58 | INFO | src.data.split_interactions | Train/val/test split process completed.
+2025-12-04 20:09:58 | INFO | __main__ | Step 3: Building user/item features...
+2025-12-04 20:09:58 | INFO | src.data.build_features | Loaded interactions: 199686
+2025-12-04 20:10:11 | INFO | src.data.build_features | Saved user features to data/processed/user_features.parquet
+2025-12-04 20:10:11 | INFO | src.data.build_features | Saved item features to data/processed/item_features.parquet
+2025-12-04 20:10:11 | INFO | __main__ | Step 4: Building heterogeneous graph...
+2025-12-04 20:10:11 | INFO | src.data.build_graph | Building heterogenous bipartite graph...
+2025-12-04 20:10:11 | INFO | src.data.build_graph | Loading processed interaction and feature files..
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Loaded 199,686 interactions.
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Users: 160,066 | Items: 73,910
+2025-12-04 20:10:12 | INFO | src.data.build_graph | user.x shape = torch.Size([160066, 8])
+2025-12-04 20:10:12 | INFO | src.data.build_graph | item.x shape = torch.Size([73910, 8])
+2025-12-04 20:10:12 | INFO | src.data.build_graph | edge_index shape = torch.Size([2, 199686])
+2025-12-04 20:10:12 | INFO | src.data.build_graph | edge_attribute shape = torch.Size([199686, 4])
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Edge split counts: train=173921, val=6393, test=19372
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Constructing HeteroData graph...
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Saved hetero graph → data/processed/hetero_graph.pt
+2025-12-04 20:10:12 | INFO | src.data.build_graph | Graph build complete.
+2025-12-04 20:10:12 | INFO | __main__ | Step 5: Training model...
+2025-12-04 20:10:12 | INFO | src.train.train | Loading hetero graph...
+2025-12-04 20:10:12 | INFO | src.train.train | user_in_dim=8, item_in_dim=8
+2025-12-04 20:10:12 | INFO | src.train.train | Using device: cpu
+2025-12-04 20:10:12 | INFO | src.train.train | Using HeteroGATEncoder
+2025-12-04 20:10:12 | INFO | src.train.train | Train edges: 173921, Val edges: 6393
+2025-12-04 20:10:12 | INFO | src.train.train | Starting training...
+2025-12-04 20:11:53 | INFO | src.train.train | [Epoch 001] batch 200/340 (last_batch_loss=0.3797)
+2025-12-04 20:13:03 | INFO | src.train.train | [Epoch 001] train_loss=0.4182
+2025-12-04 20:13:03 | INFO | src.train.train | [Epoch 001] train_loss=0.4182  val_pairwise=0.8583
+2025-12-04 20:14:58 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:14:58 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:14:58 | INFO | __main__ | Using device: cpu
+2025-12-04 20:14:58 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 20:14:58 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 20:17:50 | INFO | __main__ | [Epoch 001] train_loss=0.4227  val_pairwise=0.8625
+2025-12-04 20:20:41 | INFO | __main__ | [Epoch 002] train_loss=0.3437  val_pairwise=0.9069
+2025-12-04 20:23:26 | INFO | __main__ | [Epoch 003] train_loss=0.3320  val_pairwise=0.9097
+2025-12-04 20:25:40 | INFO | __main__ | [Epoch 004] train_loss=0.3275  val_pairwise=0.9341
+2025-12-04 20:27:53 | INFO | __main__ | [Epoch 005] train_loss=0.3247  val_pairwise=0.9381
+2025-12-04 20:27:53 | INFO | __main__ | Saved gat model → data/processed/gat_model.pt
+2025-12-04 20:28:10 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:28:10 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:28:10 | INFO | __main__ | Using device: cpu
+2025-12-04 20:28:10 | INFO | __main__ | Using HeteroSAGEEncoder
+2025-12-04 20:28:10 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 20:28:53 | INFO | __main__ | [Epoch 001] train_loss=0.3698  val_pairwise=0.9471
+2025-12-04 20:29:37 | INFO | __main__ | [Epoch 002] train_loss=0.3114  val_pairwise=0.9503
+2025-12-04 20:30:19 | INFO | __main__ | [Epoch 003] train_loss=0.3063  val_pairwise=0.9506
+2025-12-04 20:31:02 | INFO | __main__ | [Epoch 004] train_loss=0.3039  val_pairwise=0.9575
+2025-12-04 20:31:46 | INFO | __main__ | [Epoch 005] train_loss=0.3022  val_pairwise=0.9564
+2025-12-04 20:31:46 | INFO | __main__ | Saved sage model → data/processed/sage_model.pt
+2025-12-04 20:31:51 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:31:51 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:31:51 | INFO | __main__ | Using device: cpu
+2025-12-04 20:31:51 | INFO | __main__ | Using HeteroSAGEEncoder
+2025-12-04 20:31:51 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 20:32:18 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:32:18 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:32:18 | INFO | __main__ | Using device: cpu
+2025-12-04 20:32:18 | INFO | __main__ | Using HeteroGCNEncoder
+2025-12-04 20:32:19 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 20:32:53 | INFO | __main__ | [Epoch 001] train_loss=0.3606  val_pairwise=0.9412
+2025-12-04 20:33:27 | INFO | __main__ | [Epoch 002] train_loss=0.3129  val_pairwise=0.9537
+2025-12-04 20:34:02 | INFO | __main__ | [Epoch 003] train_loss=0.3077  val_pairwise=0.9553
+2025-12-04 20:34:38 | INFO | __main__ | [Epoch 004] train_loss=0.3050  val_pairwise=0.9565
+2025-12-04 20:35:12 | INFO | __main__ | [Epoch 005] train_loss=0.3039  val_pairwise=0.9548
+2025-12-04 20:35:12 | INFO | __main__ | Saved gcn model → data/processed/gcn_model.pt
+2025-12-04 20:35:25 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:35:25 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:35:25 | INFO | __main__ | Using device: cpu
+2025-12-04 20:35:25 | INFO | __main__ | Using LightGCNEncoder
+2025-12-04 20:35:25 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 20:35:53 | INFO | __main__ | [Epoch 001] train_loss=0.3455  val_pairwise=0.9936
+2025-12-04 20:36:21 | INFO | __main__ | [Epoch 002] train_loss=0.3326  val_pairwise=0.9922
+2025-12-04 20:36:50 | INFO | __main__ | [Epoch 003] train_loss=0.3261  val_pairwise=0.9905
+2025-12-04 20:37:19 | INFO | __main__ | [Epoch 004] train_loss=0.3207  val_pairwise=0.9894
+2025-12-04 20:37:47 | INFO | __main__ | [Epoch 005] train_loss=0.3161  val_pairwise=0.9881
+2025-12-04 20:37:47 | INFO | __main__ | Saved lightgcn model → data/processed/lightgcn_model.pt
+2025-12-04 20:38:23 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:38:23 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:38:23 | INFO | __main__ | Using device: cpu
+2025-12-04 20:38:23 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 20:38:49 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:38:49 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:38:49 | INFO | __main__ | Using device: cpu
+2025-12-04 20:38:49 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 20:39:04 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:39:04 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:39:04 | INFO | __main__ | Using device: cpu
+2025-12-04 20:39:04 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 20:39:14 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:39:14 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:39:14 | INFO | __main__ | Using device: cpu
+2025-12-04 20:39:14 | INFO | __main__ | Eval: Using HeteroGATEncoder
+2025-12-04 20:39:14 | INFO | __main__ | Evaluating ranking metrics on TEST split...
+2025-12-04 20:39:15 | INFO | __main__ | Eval split='test': 19372 interactions, 19372 users with test items.
+2025-12-04 20:40:49 | INFO | __main__ | [TEST] K=05 | HR@K=0.0160  P@K=0.0032  R@K=0.0160  NDCG@K=0.0093
+2025-12-04 20:40:49 | INFO | __main__ | [TEST] K=10 | HR@K=0.0314  P@K=0.0031  R@K=0.0314  NDCG@K=0.0143
+2025-12-04 20:40:49 | INFO | __main__ | [TEST] K=20 | HR@K=0.0566  P@K=0.0028  R@K=0.0566  NDCG@K=0.0206
+2025-12-04 20:45:21 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:45:21 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:45:21 | INFO | __main__ | Using device: cpu
+2025-12-04 20:45:21 | INFO | __main__ | Eval: Using HeteroSAGEEncoder
+2025-12-04 20:45:21 | INFO | __main__ | Evaluating ranking metrics on TEST split...
+2025-12-04 20:45:22 | INFO | __main__ | Eval split='test': 19372 interactions, 19372 users with test items.
+2025-12-04 20:46:56 | INFO | __main__ | [TEST] K=05 | HR@K=0.0463  P@K=0.0093  R@K=0.0463  NDCG@K=0.0291
+2025-12-04 20:46:56 | INFO | __main__ | [TEST] K=10 | HR@K=0.0762  P@K=0.0076  R@K=0.0762  NDCG@K=0.0387
+2025-12-04 20:46:56 | INFO | __main__ | [TEST] K=20 | HR@K=0.1210  P@K=0.0060  R@K=0.1210  NDCG@K=0.0499
+2025-12-04 20:47:03 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:47:03 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:47:03 | INFO | __main__ | Using device: cpu
+2025-12-04 20:47:03 | INFO | __main__ | Eval: Using HeteroGCNEncoder
+2025-12-04 20:47:03 | INFO | __main__ | Evaluating ranking metrics on TEST split...
+2025-12-04 20:47:04 | INFO | __main__ | Eval split='test': 19372 interactions, 19372 users with test items.
+2025-12-04 20:48:39 | INFO | __main__ | [TEST] K=05 | HR@K=0.0588  P@K=0.0118  R@K=0.0588  NDCG@K=0.0370
+2025-12-04 20:48:39 | INFO | __main__ | [TEST] K=10 | HR@K=0.0948  P@K=0.0095  R@K=0.0948  NDCG@K=0.0487
+2025-12-04 20:48:39 | INFO | __main__ | [TEST] K=20 | HR@K=0.1387  P@K=0.0069  R@K=0.1387  NDCG@K=0.0598
+2025-12-04 20:48:58 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:48:58 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:48:58 | INFO | __main__ | Using device: cpu
+2025-12-04 20:48:58 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 20:50:04 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:50:04 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:50:04 | INFO | __main__ | Using device: cpu
+2025-12-04 20:50:04 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 20:50:40 | INFO | __main__ | Loading hetero graph...
+2025-12-04 20:50:40 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 20:50:40 | INFO | __main__ | Using device: cpu
+2025-12-04 20:50:40 | INFO | __main__ | Eval: Using LightGCNEncoder
+2025-12-04 21:01:52 | INFO | __main__ | Loading hetero graph...
+2025-12-04 21:01:52 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 21:01:52 | INFO | __main__ | Using device: cpu
+2025-12-04 21:01:52 | INFO | __main__ | Using HeteroGATEncoder
+2025-12-04 21:01:52 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 21:03:10 | INFO | __main__ | [Epoch 001] batch 200/340 (last_batch_loss=0.3590)
+2025-12-04 21:04:05 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:04:31 | INFO | __main__ | [VAL] K=10 | HR@K=0.0119  P@K=0.0012  R@K=0.0119  NDCG@K=0.0058
+2025-12-04 21:04:31 | INFO | __main__ | [Epoch 001] train_loss=0.4031  val_pairwise=0.8886  ndcg@10=0.0058
+2025-12-04 21:04:31 | INFO | __main__ | New best model at epoch 1 with ndcg@10=0.0058. Saved → data/processed/gat_best.pt
+2025-12-04 21:05:49 | INFO | __main__ | [Epoch 002] batch 200/340 (last_batch_loss=0.3254)
+2025-12-04 21:06:44 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:07:09 | INFO | __main__ | [VAL] K=10 | HR@K=0.0075  P@K=0.0008  R@K=0.0075  NDCG@K=0.0036
+2025-12-04 21:07:09 | INFO | __main__ | [Epoch 002] train_loss=0.3406  val_pairwise=0.9063  ndcg@10=0.0036
+2025-12-04 21:07:09 | INFO | __main__ | No improvement in ndcg@10 for 1 epoch(s). Best=0.0058 at epoch 1.
+2025-12-04 21:08:27 | INFO | __main__ | [Epoch 003] batch 200/340 (last_batch_loss=0.3305)
+2025-12-04 21:09:23 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:09:48 | INFO | __main__ | [VAL] K=10 | HR@K=0.0164  P@K=0.0016  R@K=0.0164  NDCG@K=0.0072
+2025-12-04 21:09:48 | INFO | __main__ | [Epoch 003] train_loss=0.3320  val_pairwise=0.9179  ndcg@10=0.0072
+2025-12-04 21:09:48 | INFO | __main__ | New best model at epoch 3 with ndcg@10=0.0072. Saved → data/processed/gat_best.pt
+2025-12-04 21:11:06 | INFO | __main__ | [Epoch 004] batch 200/340 (last_batch_loss=0.3385)
+2025-12-04 21:12:01 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:12:27 | INFO | __main__ | [VAL] K=10 | HR@K=0.0172  P@K=0.0017  R@K=0.0172  NDCG@K=0.0066
+2025-12-04 21:12:27 | INFO | __main__ | [Epoch 004] train_loss=0.3288  val_pairwise=0.9296  ndcg@10=0.0066
+2025-12-04 21:12:27 | INFO | __main__ | No improvement in ndcg@10 for 1 epoch(s). Best=0.0072 at epoch 3.
+2025-12-04 21:13:46 | INFO | __main__ | [Epoch 005] batch 200/340 (last_batch_loss=0.3165)
+2025-12-04 21:14:41 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:15:07 | INFO | __main__ | [VAL] K=10 | HR@K=0.0136  P@K=0.0014  R@K=0.0136  NDCG@K=0.0058
+2025-12-04 21:15:07 | INFO | __main__ | [Epoch 005] train_loss=0.3269  val_pairwise=0.9407  ndcg@10=0.0058
+2025-12-04 21:15:07 | INFO | __main__ | No improvement in ndcg@10 for 2 epoch(s). Best=0.0072 at epoch 3.
+2025-12-04 21:15:07 | INFO | __main__ | Early stopping triggered after 2 epochs with no improvement in ndcg@10.
+2025-12-04 21:15:07 | INFO | __main__ | Saved last gat model → data/processed/gat_last.pt
+2025-12-04 21:15:45 | INFO | __main__ | Loading hetero graph...
+2025-12-04 21:15:45 | INFO | __main__ | user_in_dim=8, item_in_dim=8
+2025-12-04 21:15:45 | INFO | __main__ | Using device: cpu
+2025-12-04 21:15:45 | INFO | __main__ | Using HeteroSAGEEncoder
+2025-12-04 21:15:46 | INFO | __main__ | Train edges: 173921, Val edges: 6393
+2025-12-04 21:16:12 | INFO | __main__ | [Epoch 001] batch 200/340 (last_batch_loss=0.3295)
+2025-12-04 21:16:30 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:16:55 | INFO | __main__ | [VAL] K=10 | HR@K=0.0213  P@K=0.0021  R@K=0.0213  NDCG@K=0.0111
+2025-12-04 21:16:55 | INFO | __main__ | [Epoch 001] train_loss=0.3708  val_pairwise=0.9357  ndcg@10=0.0111
+2025-12-04 21:16:55 | INFO | __main__ | New best model at epoch 1 with ndcg@10=0.0111. Saved → data/processed/sage_best.pt
+2025-12-04 21:17:20 | INFO | __main__ | [Epoch 002] batch 200/340 (last_batch_loss=0.3161)
+2025-12-04 21:17:38 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:18:04 | INFO | __main__ | [VAL] K=10 | HR@K=0.0382  P@K=0.0038  R@K=0.0382  NDCG@K=0.0183
+2025-12-04 21:18:04 | INFO | __main__ | [Epoch 002] train_loss=0.3124  val_pairwise=0.9495  ndcg@10=0.0183
+2025-12-04 21:18:04 | INFO | __main__ | New best model at epoch 2 with ndcg@10=0.0183. Saved → data/processed/sage_best.pt
+2025-12-04 21:18:29 | INFO | __main__ | [Epoch 003] batch 200/340 (last_batch_loss=0.3038)
+2025-12-04 21:18:47 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:19:13 | INFO | __main__ | [VAL] K=10 | HR@K=0.0505  P@K=0.0051  R@K=0.0505  NDCG@K=0.0242
+2025-12-04 21:19:13 | INFO | __main__ | [Epoch 003] train_loss=0.3086  val_pairwise=0.9503  ndcg@10=0.0242
+2025-12-04 21:19:13 | INFO | __main__ | New best model at epoch 3 with ndcg@10=0.0242. Saved → data/processed/sage_best.pt
+2025-12-04 21:19:39 | INFO | __main__ | [Epoch 004] batch 200/340 (last_batch_loss=0.3033)
+2025-12-04 21:19:57 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:20:22 | INFO | __main__ | [VAL] K=10 | HR@K=0.0477  P@K=0.0048  R@K=0.0477  NDCG@K=0.0240
+2025-12-04 21:20:22 | INFO | __main__ | [Epoch 004] train_loss=0.3059  val_pairwise=0.9523  ndcg@10=0.0240
+2025-12-04 21:20:22 | INFO | __main__ | No improvement in ndcg@10 for 1 epoch(s). Best=0.0242 at epoch 3.
+2025-12-04 21:20:48 | INFO | __main__ | [Epoch 005] batch 200/340 (last_batch_loss=0.3047)
+2025-12-04 21:21:06 | INFO | __main__ | Eval split='val': 6393 interactions, 6393 users with val items.
+2025-12-04 21:21:31 | INFO | __main__ | [VAL] K=10 | HR@K=0.0415  P@K=0.0041  R@K=0.0415  NDCG@K=0.0184
+2025-12-04 21:21:31 | INFO | __main__ | [Epoch 005] train_loss=0.3041  val_pairwise=0.9575  ndcg@10=0.0184
+2025-12-04 21:21:31 | INFO | __main__ | No improvement in ndcg@10 for 2 epoch(s). Best=0.0242 at epoch 3.
+2025-12-04 21:21:31 | INFO | __main__ | Early stopping triggered after 2 epochs with no improvement in ndcg@10.
+2025-12-04 21:21:31 | INFO | __main__ | Saved last sage model → data/processed/sage_last.pt

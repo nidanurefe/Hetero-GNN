@@ -3,19 +3,19 @@ data:
   
   raw:
     target: 
-      name: "music"
+      name: "digital_music"
       path: "data/raw/Digital_Music.jsonl"
 
     sources: 
-      - name: "movies_and_tv"
-        path: "data/raw/Movies_and_TV.jsonl"
+      - name: "magazine_subscriptions"
+        path: "data/raw/Magazine_Subscriptions.jsonl"
       # - name: "appliances"
       #   path: "data/raw/Appliances.jsonl"
       # - name: "movies"
         # path: "data/raw/Movies.jsonl"
 
 model:
-  type: "lightgcn"   # gat | sage | gcn | lightgcn
+  type: "sage"   # gat | sage | gcn | lightgcn
   hidden_channels: 32 # hidden embedding size, increase if underfits, decrease if overfits
   out_channels: 32 # final embedding size
   num_layers: 2 # 2 hop neighborhood
@@ -24,14 +24,20 @@ model:
   edge_dim: 4
 
 training:
-  loss_type: "bpr_softplus"   # bpr_sigmoid | bpr_softplus | hinge
+  loss_type: "bpr_sigmoid"   # bpr_sigmoid | bpr_softplus | hinge
   num_epochs: 5
   batch_size: 512
   val_batch_size: 1024
   learning_rate: 0.001
   weight_decay: 0.0
   reg_lambda: 0.0001    # L2 regularization coefficient
-  device: "auto"              # auto | cpu | cuda
+  device: "auto"        # auto | cpu | cuda
+  early_stopping:
+    metric: "ndcg@10"     # ndcg@K | precision@K | recall@K
+    mode: "max"           # max: metric improves as it grows, min: metric improves as it decreases
+    patience: 2           # after how many epochs with no improvement to stop
+    min_delta: 0.001      # improvement threshold
+    eval_k: 10 
 
 logging:
   level: "INFO"
